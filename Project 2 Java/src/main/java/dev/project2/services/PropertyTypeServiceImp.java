@@ -14,7 +14,7 @@ import java.util.List;
 public class PropertyTypeServiceImp implements PropertyTypeService
 {
     @Autowired
-    private static PropertyTypeRepository ptr;
+    private  PropertyTypeRepository ptr;
 
 
     @Override
@@ -47,9 +47,6 @@ public class PropertyTypeServiceImp implements PropertyTypeService
         float before = ptr.count();
         ptr.delete(propertyType);
         float after = ptr.count();
-        if (before>after)
-            return true;
-
-        return false;
+        return before > after;
     }
 }

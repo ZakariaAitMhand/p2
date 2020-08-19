@@ -13,7 +13,7 @@ import java.util.List;
 public class PropertyServiceImp implements PropertyService
 {
     @Autowired
-    private static PropertyRepository pr;
+    private  PropertyRepository pr;
 
     @Override
     public Property createProperty(Property property)

@@ -14,8 +14,7 @@ public class PropertyType
     @Column(name = "description")
     private String description;
 
-    @OneToMany
-    @JoinColumn(name = "propertyType")
+    @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
     private List<Property> properties;
 
     public PropertyType()
@@ -46,6 +45,16 @@ public class PropertyType
     public void setDescription(String description)
     {
         this.description = description;
+    }
+
+    public List<Property> getProperties()
+    {
+        return properties;
+    }
+
+    public void setProperties(List<Property> properties)
+    {
+        this.properties = properties;
     }
 
     @Override

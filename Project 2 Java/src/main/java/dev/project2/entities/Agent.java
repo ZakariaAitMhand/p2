@@ -23,7 +23,7 @@ public class Agent
     @Column(name="phone")
     private String phone;
 
-    @OneToMany(mappedBy = "agent")
+    @OneToMany(mappedBy = "agent", fetch = FetchType.EAGER)
     private List<Property> propertyList;
 
     public Agent()
@@ -98,6 +98,16 @@ public class Agent
     public void setPhone(String phone)
     {
         this.phone = phone;
+    }
+
+    public List<Property> getPropertyList()
+    {
+        return propertyList;
+    }
+
+    public void setPropertyList(List<Property> propertyList)
+    {
+        this.propertyList = propertyList;
     }
 
     @Override
