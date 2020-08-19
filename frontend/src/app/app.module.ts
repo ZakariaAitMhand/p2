@@ -17,6 +17,7 @@ import { InteractionService } from './services/interaction-service/interaction.s
 import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DropFileComponent } from './components/drop-file/drop-file.component';
+import { PropertyService } from './services/property/property.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { DropFileComponent } from './components/drop-file/drop-file.component';
     PropertyCreateComponent,
     MenuComponent,
     BannerComponent,
-    DropFileComponent
+    DropFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +42,8 @@ import { DropFileComponent } from './components/drop-file/drop-file.component';
   ],
   providers: [
     InteractionService,
-    ImageUploadService
+    ImageUploadService,
+    PropertyService
   ],
   bootstrap: [AppComponent]
 })

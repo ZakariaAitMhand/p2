@@ -1,7 +1,8 @@
 import { Component,OnInit } from '@angular/core';
 import{ImageUploadService} from '../../services/image-upload.service';
 import { DropFileComponent } from '../drop-file/drop-file.component';
-
+import { Property } from '../../models/property';
+import { PropertyService } from 'src/app/services/property/property.service';
 @Component({
   selector: 'app-property-create',
   templateUrl: './property-create.component.html',
@@ -12,14 +13,19 @@ export class PropertyCreateComponent implements OnInit  {
   ngOnInit(): void {
   }
 
-  constructor(private uploadService: ImageUploadService){
+  constructor(private uploadService: ImageUploadService, private propServ:PropertyService){
     
   }
+
+  priceField:number;
+  addressField:string;
+  squareFeetField:number;
 
   //uploading images to bucket
    newPropertyImages(){
     let imageFiles = this.uploadService.fileImport;
-    let foldername:string = document.getElementById("LocationInput").innerHTML;
+    console.log(location);
+    let foldername:string = location.toString();
     for(let image of imageFiles){
     this.uploadService.createFolderAndUploadImages(image, foldername);
     }
@@ -33,23 +39,19 @@ export class PropertyCreateComponent implements OnInit  {
     {value: '2', viewValue: 'Condo'}
   ];
 
-  createProperty(){
+  
+
+  async createProperty(){
 
     this.newPropertyImages();
+    let newProperty = new Property(this.priceField, this.addressField, this.squareFeetField, this.uploadService.folderImport);
+    newProperty = await this.propServ.createProperty(newProperty);
 
-    // let newProperty = {
-    //   newPrice: document.getElementById("PriceInput").innerHTML,
-    //   newAddress: document.getElementById("LocationInput").innerHTML,
-    //   newSquareFeet: document.getElementById("SurfaceInput").innerHTML,
-    //   imageLink: `${this.uploadService.folderImport}`
-    // }
-    // const type = {
-    //   method:"POST",
-    //   headers:{'Content-Type' : 'application/json'},
-    //   body: JSON.stringify(newProperty)
-    // };
+    console.log("Property created: "  + newProperty);
 
-    // const httpResponse = await fetch("http://localhost:7000/properties", type);
+    this.priceField = undefined;
+    this.addressField = "";
+    this.squareFeetField = undefined;
 
   }
 }

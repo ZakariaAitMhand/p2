@@ -16,4 +16,8 @@ export class PropertyDisplayHomepageComponent implements OnInit {
     alert("property Click")
   }
 
+  
+  property: any/*Property*/ = 
+    {location: 'address', price:0, squareFeet: 'squareFeet'};
+
 }

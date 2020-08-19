@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InteractionService } from '../../services/interaction-service/interaction.service';
-
+import { PropertyService } from 'src/app/services/property/property.service';
+import { Property } from '../../models/property';
 
 @Component({
   selector: 'app-home-page',
@@ -13,8 +14,10 @@ export class HomePageComponent implements OnInit {
   @Input() maxValue:number;
   @Input() searchValue;
 
+  properties:Property[];
+  property:Property;
 
-  constructor(/*private interactionService:InteractionService*/) { }
+  constructor(/*private interactionService:InteractionService,*/ private propServ:PropertyService) { }
 
   
   
@@ -33,9 +36,12 @@ export class HomePageComponent implements OnInit {
 
 
   async search() {
-
+    
+    this.property = await this.propServ.getPropertyByAddress(this.searchValue);
+    console.log("Address found: "  + this.property);
     alert("search for " +  this.searchValue);
     this.searchValue = "";
+    
   }
 
   lowToHighCost(){
@@ -49,4 +55,17 @@ export class HomePageComponent implements OnInit {
   costBetween(){
     alert("cost betweeen: " + this.minValue + " and " + this.maxValue);
   }
+
+  async getAllProperties(){
+    console.log("getting properties");
+    this.properties = await this.propServ.getAllProperties();
+    console.log("getting all properties: " + this.properties);
+    
+    let cardBody = document.getElementById("propertyCards");
+    let newCard : string = `<app-property-display-homepage></app-property-display-homepage>`;  
+    
+    cardBody.innerHTML = newCard;
+    let insertPrice = document.getElementsByTagName("app-property-display-homepage");
+  }
+
 }

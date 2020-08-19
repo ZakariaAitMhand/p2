@@ -19,15 +19,15 @@
 <mat-card id="CreatePropertyContainer">
         <mat-form-field>
             <mat-label>Price</mat-label>
-            <input matInput type="number" placeholder="Price" id="PriceInput" required>
+            <input matInput type="number" placeholder="Price" id="PriceInput" required [(ngModel)] = "priceField">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Surface</mat-label>
-            <input matInput type="number" placeholder="Surface" id="SurfaceInput" required>
+            <input matInput type="number" placeholder="Surface" id="SurfaceInput" required [(ngModel)] = "squareFeetField">
             <mat-hint >Enter Surface in square feet</mat-hint>
         </mat-form-field>
         <mat-form-field>
-            <input matInput placeholder="Location" id="LocationInput" required>
+            <input matInput placeholder="Location" id="LocationInput" required [(ngModel)] = "addressField">
         </mat-form-field>
         <mat-form-field>
         <mat-label>Property Type</mat-label>
@@ -41,3 +41,5 @@
         <button mat-button color="accent" (click) = "createProperty()">Create</button>
         <!-- <button mat-button color="accent">Cancel</button> -->
 </mat-card>
+
+

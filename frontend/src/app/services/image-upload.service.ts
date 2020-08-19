@@ -15,10 +15,11 @@ export class ImageUploadService {
 
   createFolderAndUploadImages(file, foldername:string){     
 
-    foldername.concat(Date.now().toString());
+    foldername = foldername.concat(Date.now().toString());
     this.folderImport = foldername;
     let newFileName:string = file.name;
-    newFileName.concat(Date.now().toString());
+    newFileName = newFileName.concat(Date.now().toString());
+    console.log(foldername + "/" + newFileName);
 
     const contentType = file.type;
     const bucket = new S3(
