@@ -77,6 +77,8 @@ class AgentServiceTest
                 "551-551-1111"));
         Mockito.when(ar.findAll()).thenReturn(agents);
         List<Agent> results = as.getAllAgents();
+
+        System.out.println(results);
         assertNotEquals(0, results.size());
 
         Mockito.verify(ar).findAll();

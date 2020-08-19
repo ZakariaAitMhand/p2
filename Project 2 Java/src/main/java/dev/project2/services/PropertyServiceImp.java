@@ -35,23 +35,23 @@ public class PropertyServiceImp implements PropertyService
 
 //    TODO
     @Override
-    public List<Property> getPropertiesFromLowToHigh(double price)
+    public List<Property> getPropertiesFromLowToHigh()
     {
-        return null;
+        return pr.findByOrderByPriceAsc();
     }
 
 //    TODO
     @Override
-    public List<Property> getPropertiesFromHighToLow(double price)
+    public List<Property> getPropertiesFromHighToLow()
     {
-        return null;
+        return pr.findByOrderByPriceDesc();
     }
 
 //    TODO
     @Override
     public List<Property> getPropertiesMatchingString(String query)
     {
-        return null;
+        return pr.findByLocationContaining(query);
     }
 
     @Override

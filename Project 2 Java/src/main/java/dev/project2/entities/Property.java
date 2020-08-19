@@ -2,6 +2,7 @@ package dev.project2.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -27,12 +28,12 @@ public class Property
 
     @ManyToOne
     @JoinColumn(name="aid")
-    @JsonBackReference
+    @JsonManagedReference
     private Agent agent;
 
     @ManyToOne
     @JoinColumn(name = "ptid")
-    @JsonBackReference
+    @JsonManagedReference
     private PropertyType propertyType;
 
     public Property()

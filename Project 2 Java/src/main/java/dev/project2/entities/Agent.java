@@ -1,5 +1,6 @@
 package dev.project2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
@@ -26,7 +27,7 @@ public class Agent
     private String phone;
 
     @OneToMany(mappedBy = "agent", fetch = FetchType.EAGER)
-    @JsonManagedReference
+    @JsonBackReference
     private List<Property> propertyList;
 
     public Agent()
