@@ -1,6 +1,7 @@
 package dev.project2.services;
 
 import dev.project2.entities.Agent;
+import dev.project2.entities.PropertyType;
 
 import java.util.List;
 
@@ -20,5 +21,7 @@ public interface AgentService
 
 //    DELETE
     Boolean deleteAgent(Agent agent);
+
+
 
 }
