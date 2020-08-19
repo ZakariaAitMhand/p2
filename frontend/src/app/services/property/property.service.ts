@@ -6,6 +6,8 @@ import { Property } from 'src/app/models/property';
   providedIn: 'root'
 })
 export class PropertyService {
+ 
+  isSearching:boolean = false;
 
   constructor(private http:HttpClient) {   }
 
