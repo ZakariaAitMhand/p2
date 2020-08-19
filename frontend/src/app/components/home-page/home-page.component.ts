@@ -15,13 +15,13 @@ export class HomePageComponent implements OnInit {
   @Input() searchValue;
 
   properties:Property[];
-  property:Property;
 
   constructor(/*private interactionService:InteractionService,*/ private propServ:PropertyService) { }
 
   
   
   ngOnInit(): void {
+    this.getAllProperties();
   }
 
   // backTransparent:boolean=this.interactionService.backTransparent;
@@ -33,16 +33,6 @@ export class HomePageComponent implements OnInit {
   //   this.LoginContainer=true;
   // }
 
-
-
-  async search() {
-    
-    this.property = await this.propServ.getPropertyByAddress(this.searchValue);
-    console.log("Address found: "  + this.property);
-    alert("search for " +  this.searchValue);
-    this.searchValue = "";
-    
-  }
 
   lowToHighCost(){
     alert("low to high button");
@@ -57,15 +47,8 @@ export class HomePageComponent implements OnInit {
   }
 
   async getAllProperties(){
-    console.log("getting properties");
     this.properties = await this.propServ.getAllProperties();
     console.log("getting all properties: " + this.properties);
-    
-    let cardBody = document.getElementById("propertyCards");
-    let newCard : string = `<app-property-display-homepage></app-property-display-homepage>`;  
-    
-    cardBody.innerHTML = newCard;
-    let insertPrice = document.getElementsByTagName("app-property-display-homepage");
   }
 
 }

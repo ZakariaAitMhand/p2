@@ -24,8 +24,8 @@ export class PropertyCreateComponent implements OnInit  {
   //uploading images to bucket
    newPropertyImages(){
     let imageFiles = this.uploadService.fileImport;
-    console.log(location);
-    let foldername:string = location.toString();
+    console.log(this.addressField);
+    let foldername:string = this.addressField.toString();
     for(let image of imageFiles){
     this.uploadService.createFolderAndUploadImages(image, foldername);
     }
