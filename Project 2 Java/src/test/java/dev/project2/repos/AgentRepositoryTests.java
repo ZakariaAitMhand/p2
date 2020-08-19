@@ -33,7 +33,7 @@ public class AgentRepositoryTests
     void testGetAllAgents()
     {
         List<Agent> agents = (List<Agent>)ar.findAll();
-
+//        System.out.println(agents);
         Assertions.assertNotEquals(0, agents.size());
     }
 

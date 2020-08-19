@@ -12,8 +12,8 @@ public interface PropertyService
 
     Property getPropertyById(int pid);
     List<Property> getAllProperties();
-    List<Property> getPropertiesFromLowToHigh(double price);
-    List<Property> getPropertiesFromHighToLow(double price);
+    List<Property> getPropertiesFromLowToHigh();
+    List<Property> getPropertiesFromHighToLow();
     List<Property> getPropertiesMatchingString(String query);
 
 
