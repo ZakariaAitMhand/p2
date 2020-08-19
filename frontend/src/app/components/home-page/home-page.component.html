@@ -2,11 +2,24 @@
 <app-menu></app-menu>
 <app-banner></app-banner>
 <div id = "propertyCards">
+
+  <!-- <app-property-display-homepage></app-property-display-homepage>
   <app-property-display-homepage></app-property-display-homepage>
   <app-property-display-homepage></app-property-display-homepage>
   <app-property-display-homepage></app-property-display-homepage>
   <app-property-display-homepage></app-property-display-homepage>
   <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>  
+  <app-property-display-homepage></app-property-display-homepage>   -->
+
+
+  <div *ngIf = "!this.propServ.isSearching">
+    <!-- getting all of the properties from the typescript file in this component
+    inputing property model information into new card and repeats till all cards are made  -->
+    <app-property-display-homepage *ngFor = "let property of properties"  [property] ="newProperty"></app-property-display-homepage> 
+  </div>
+
+  <div *ngIf = "this.propServ.isSearching">
+    <app-property-display-homepage [property] = "property"></app-property-display-homepage> 
+  </div>
+
 </div>
