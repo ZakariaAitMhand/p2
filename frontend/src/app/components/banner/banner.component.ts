@@ -9,6 +9,7 @@ import { PropertyService } from '../../services/property/property.service'
 export class BannerComponent implements OnInit {
 
   property:Property;
+
   constructor(private propServ:PropertyService) { }
   // srch:string = "fas";
   ngOnInit(): void {
@@ -18,7 +19,7 @@ export class BannerComponent implements OnInit {
   performSearch(value: string):void{
     alert(value);
     this.getPropertyByAddress(value);
-
+    this.propServ.isSearching = true;
   }
 
   onSearchEnter(value: string) {
