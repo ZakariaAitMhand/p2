@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Property } from 'src/app/models/property';
 
 @Component({
   selector: 'app-property-display-homepage',
@@ -7,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyDisplayHomepageComponent implements OnInit {
 
+  @Input() newProperty:Property;
   constructor() { }
 
   ngOnInit(): void {
@@ -18,6 +20,6 @@ export class PropertyDisplayHomepageComponent implements OnInit {
 
   
   property: any/*Property*/ = 
-    {location: 'address', price:0, squareFeet: 'squareFeet'};
+    {location: this.newProperty.location, price:this.newProperty.price, squareFeet: this.newProperty.squareFeet};
 
 }
