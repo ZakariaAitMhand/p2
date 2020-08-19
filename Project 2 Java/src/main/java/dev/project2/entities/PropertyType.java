@@ -1,7 +1,7 @@
 package dev.project2.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.List;
@@ -20,6 +20,7 @@ public class PropertyType
     @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
     @JsonBackReference
     private List<Property> properties;
+    //private transient List<Property> properties;
 
     public PropertyType()
     {
@@ -60,7 +61,7 @@ public class PropertyType
     {
         this.properties = properties;
     }
-
+/*
     @Override
     public String toString()
     {
@@ -69,4 +70,5 @@ public class PropertyType
                 ", description='" + description + '\'' +
                 '}';
     }
+    */
 }
