@@ -1,5 +1,7 @@
 package dev.project2.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -15,6 +17,7 @@ public class PropertyType
     private String description;
 
     @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Property> properties;
 
     public PropertyType()

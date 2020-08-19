@@ -1,5 +1,7 @@
 package dev.project2.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -24,6 +26,7 @@ public class Agent
     private String phone;
 
     @OneToMany(mappedBy = "agent", fetch = FetchType.EAGER)
+    @JsonManagedReference
     private List<Property> propertyList;
 
     public Agent()
