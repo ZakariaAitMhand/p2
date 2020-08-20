@@ -47,8 +47,121 @@ export class HomePageComponent implements OnInit {
   }
 
   async getAllProperties(){
-    this.properties = await this.propServ.getAllProperties();
-    console.log("getting all properties: " + this.properties);
+    // this.properties = await this.propServ.getAllProperties();
+    this.properties = [
+      {
+        "pid": 1,
+        "price": 100000.0,
+        "square_feet": 1234.0,
+        "image_url": "property1.png",
+        "location": "124 anywhere st. Anywhere, NJ 11111",
+        "agent": {
+            "aid": 3,
+            "username": "Johnny Bones",
+            "password": "YouTheMan!",
+            "image_url": "selfie.png",
+            "email": "JohnSells@email.com",
+            "phone": "201-551-1234",
+            "propertyList": null
+        },
+        "propertyType": {
+            "ptid": 3,
+            "description": "House",
+            "properties": null
+        },
+        "sold": false
+    },
+    {
+      "pid": 2,
+      "price": 100000.0,
+      "square_feet": 1234.0,
+      "image_url": "property1.png",
+      "location": "124 anywhere st. Anywhere, NJ 11111",
+      "agent": {
+          "aid": 3,
+          "username": "Johnny Bones",
+          "password": "YouTheMan!",
+          "image_url": "selfie.png",
+          "email": "JohnSells@email.com",
+          "phone": "201-551-1234",
+          "propertyList": null
+      },
+      "propertyType": {
+          "ptid": 3,
+          "description": "House",
+          "properties": null
+      },
+      "sold": false
+  },
+  {
+    "pid": 3,
+    "price": 100000.0,
+    "square_feet": 1234.0,
+    "image_url": "property1.png",
+    "location": "124 anywhere st. Anywhere, NJ 11111",
+    "agent": {
+        "aid": 3,
+        "username": "Johnny Bones",
+        "password": "YouTheMan!",
+        "image_url": "selfie.png",
+        "email": "JohnSells@email.com",
+        "phone": "201-551-1234",
+        "propertyList": null
+    },
+    "propertyType": {
+        "ptid": 3,
+        "description": "House",
+        "properties": null
+    },
+    "sold": false
+  },
+  {
+    "pid": 4,
+    "price": 100000.0,
+    "square_feet": 1234.0,
+    "image_url": "property1.png",
+    "location": "124 anywhere st. Anywhere, NJ 11111",
+    "agent": {
+        "aid": 3,
+        "username": "Johnny Bones",
+        "password": "YouTheMan!",
+        "image_url": "selfie.png",
+        "email": "JohnSells@email.com",
+        "phone": "201-551-1234",
+        "propertyList": null
+    },
+    "propertyType": {
+        "ptid": 3,
+        "description": "House",
+        "properties": null
+    },
+    "sold": false
+    },
+    {
+      "pid": 5,
+      "price": 100000.0,
+      "square_feet": 1234.0,
+      "image_url": "property1.png",
+      "location": "124 anywhere st. Anywhere, NJ 11111",
+      "agent": {
+          "aid": 3,
+          "username": "Johnny Bones",
+          "password": "YouTheMan!",
+          "image_url": "selfie.png",
+          "email": "JohnSells@email.com",
+          "phone": "201-551-1234",
+          "propertyList": null
+      },
+      "propertyType": {
+          "ptid": 3,
+          "description": "House",
+          "properties": null
+      },
+      "sold": false
+    }
+
+    ];
+    // console.log("getting all properties: " + JSON.stringify(this.properties));
   }
 
 }

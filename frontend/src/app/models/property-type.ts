@@ -1,8 +1,14 @@
+import {Property} from './property';
+
 export class PropertyType {
-    
-    propertyTypeId:number[];
 
-    constructor(price:number){
+    ptid:number;
+    description:string;
+    properties:Property[];
 
+    constructor(ptid:number, description:string, properties:Property[]){
+        this.ptid = ptid;
+        this.description = description;
+        this.properties = properties;
     }
 }

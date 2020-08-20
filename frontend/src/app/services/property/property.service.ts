@@ -14,18 +14,23 @@ export class PropertyService {
   constructor(private http:HttpClient) {   }
 
    async createProperty(property:Property):Promise<Property>{
-    property = await this.http.post<Property>(`http://localhost:7000/agents/${property.aId}/properties`,property).toPromise();
+    property = await this.http.post<Property>(`http://localhost:8080/agents/${property.aId}/properties`,property).toPromise();
+    //property = await this.http.post<Property>(`http://localhost:7000/agents/${property.aId}/properties`,property).toPromise();
+
     return property;
   }
 
   async getPropertyByAddress(address:string):Promise<Property>{
-    const property:Property = await this.http.get<Property>(`http://localhost:7000/properties/${address}`).toPromise();
+    const property:Property = await this.http.get<Property>(`http://localhost:8080/properties/${address}`).toPromise();
+    //const property:Property = await this.http.get<Property>(`http://localhost:7000/properties/${address}`).toPromise();
     return property;
   }
 
   async getAllProperties():Promise<Array<Property>>{
-    const properties:Array<Property> = await this.http.get<Array<Property>>("http://localhost:7000/properties").toPromise();
+    const properties:Array<Property> = await this.http.get<Array<Property>>("http://localhost:8080/properties").toPromise();
     return properties;
+//     const properties:Array<Property> = await this.http.get<Array<Property>>("http://localhost:7000/properties").toPromise();
+//     return properties;
   }
 
   async getPropertyById(id:number):Promise<Property>{

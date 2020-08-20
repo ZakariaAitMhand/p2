@@ -1,16 +1,24 @@
+import { Agent } from './agent';
+import { PropertyType } from './property-type';
 export class Property {
     
-    pId:number = 0;
+    pid:number = 0;
     price:number;
     location:string;
-    squareFeet:number;
-    imageURL:string;
-    aId:number;
+    square_feet:number;
+    image_url:string;
+    agent:Agent;
+    propertyType:PropertyType;
+    sold: boolean;
 
-    constructor(price:number, address:string, squareFeet:number, imageFolderURL:string){
+    constructor(pid:number, price:number, address:string, square_feet:number, image_url:string, agent:Agent, propertyType:PropertyType, sold: boolean){
+        this.pid = pid;
         this.price = price;
         this.location = address;
-        this.squareFeet = squareFeet;
-        this.imageURL = imageFolderURL;
+        this.square_feet = square_feet;
+        this.image_url = image_url;
+        this.agent = agent;
+        this.propertyType = propertyType;
+        this.sold = sold;
     }
 }
