@@ -1,5 +1,8 @@
 package dev.project2.services;
 
+import dev.project2.entities.PropertyType;
+import dev.project2.repos.PropertyTypeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -10,33 +13,40 @@ import java.util.List;
 @Service
 public class PropertyTypeServiceImp implements PropertyTypeService
 {
+    @Autowired
+    private  PropertyTypeRepository ptr;
+
+
     @Override
-    public PropertyTypeService createPropertyType(PropertyTypeService property)
+    public PropertyType createPropertyType(PropertyType property)
     {
-        return null;
+        return ptr.save(property);
     }
 
     @Override
-    public PropertyTypeService getPropertyTypeById(int id)
+    public PropertyType getPropertyTypeById(int id)
     {
-        return null;
+        return ptr.findById(id).get();
     }
 
     @Override
-    public List<PropertyTypeService> getAllPropertyTypes()
+    public List<PropertyType> getAllPropertyTypes()
     {
-        return null;
+        return (List<PropertyType>) ptr.findAll();
     }
 
     @Override
-    public PropertyTypeService updatePropertyType(PropertyTypeService propertyType)
+    public PropertyType updatePropertyType(PropertyType propertyType)
     {
-        return null;
+        return ptr.save(propertyType);
     }
 
     @Override
-    public Boolean deletePropertyType(PropertyTypeService propertyType)
+    public Boolean deletePropertyType(PropertyType propertyType)
     {
-        return null;
+        float before = ptr.count();
+        ptr.delete(propertyType);
+        float after = ptr.count();
+        return before > after;
     }
 }

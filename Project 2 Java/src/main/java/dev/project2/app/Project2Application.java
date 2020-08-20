@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan("dev.project2") // Spring will find classes labeled with  @component
-@EntityScan("dev.project2.entities")// Spring data can find entities labled with @entity
+@EntityScan("dev.project2.entities")// Spring data can find entities labeled with @entity
 @EnableJpaRepositories("dev.project2.repos")// Spring data can find the repositories with @Repository
 public class Project2Application {
 

@@ -1,17 +1,19 @@
 package dev.project2.services;
 
+import dev.project2.entities.PropertyType;
+
 import java.util.List;
 
 public interface PropertyTypeService
 {
-    PropertyTypeService createPropertyType(PropertyTypeService property);
+    PropertyType createPropertyType(PropertyType property);
 
-    PropertyTypeService getPropertyTypeById(int id);
+    PropertyType getPropertyTypeById(int id);
 
-    List<PropertyTypeService> getAllPropertyTypes();
+    List<PropertyType> getAllPropertyTypes();
 
-    PropertyTypeService updatePropertyType(PropertyTypeService propertyType);
+    PropertyType updatePropertyType(PropertyType propertyType);
 
-    Boolean deletePropertyType(PropertyTypeService propertyType);
+    Boolean deletePropertyType(PropertyType propertyType);
 
 }
