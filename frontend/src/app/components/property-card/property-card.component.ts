@@ -2,11 +2,11 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Property } from 'src/app/models/property';
 
 @Component({
-  selector: 'app-property-display-homepage',
-  templateUrl: './property-display-homepage.component.html',
-  styleUrls: ['./property-display-homepage.component.css']
+  selector: 'app-property-card',
+  templateUrl: './property-card.component.html',
+  styleUrls: ['./property-card.component.css']
 })
-export class PropertyDisplayHomepageComponent implements OnInit {
+export class PropertyCardComponent implements OnInit {
 
   @Input("property") property:Property;
   //@Input() newProperty:Property;

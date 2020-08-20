@@ -14,8 +14,13 @@ export class PropertyService {
   constructor(private http:HttpClient) {   }
 
    async createProperty(property:Property):Promise<Property>{
+<<<<<<< HEAD
+    property = await this.http.post<Property>(`http://localhost:8080/agents/${property.aid}/properties`,property).toPromise();
+    //property = await this.http.post<Property>(`http://localhost:7000/agents/${property.aid}/properties`,property).toPromise();
+=======
     property = await this.http.post<Property>(`http://localhost:8080/agents/${property.aId}/properties`,property).toPromise();
     //property = await this.http.post<Property>(`http://localhost:7000/agents/${property.aId}/properties`,property).toPromise();
+>>>>>>> 20b694a4eef33e8f9a72ba78bb121207d3b59892
 
     return property;
   }
