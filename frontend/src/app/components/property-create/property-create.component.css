@@ -1,8 +1,0 @@
-#CreatePropertyContainer{
-    width: 500px;
-    margin: 0 auto;
-}
-
-#PriceInput, #SurfaceInput, #LocationInput{
-    width: 500px;
-}
