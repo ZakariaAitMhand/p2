@@ -3,13 +3,13 @@ import { PropertyType } from './property-type';
 export class Property {
     
     pid:number = 0;
-    price:number;
-    location:string;
-    square_feet:number;
-    image_url:string;
+    price:number = 0;
+    location:string = '';
+    square_feet:number = 0;
+    image_url:string = '';
     agent:Agent;
     propertyType:PropertyType;
-    sold: boolean;
+    sold: boolean = false;
 
     constructor(pid:number, price:number, address:string, square_feet:number, image_url:string, agent:Agent, propertyType:PropertyType, sold: boolean){
         this.pid = pid;

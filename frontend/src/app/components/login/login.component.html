@@ -13,7 +13,7 @@
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <mat-card-footer>
-        <button mat-stroked-button id="loginButton" color="accent">Login</button>
+        <button mat-stroked-button id="loginButton" color="accent" (click)="loginFct()">Login</button>
         <button mat-stroked-button id="passwordButton" color="accent" (click)="clearFields()">Clear</button>
       </mat-card-footer>
     </mat-card-content>
