@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Agent } from 'src/app/models/agent';
+import { AgentService } from 'src/app/services/agent/agent.service';
+import { Credentials } from 'src/app/models/credentials';
 // import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private agentService:AgentService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +26,11 @@ export class LoginComponent implements OnInit {
   
   }
 
-
+  loginFct():void{
+    let credentials:Credentials = new Credentials(this.userName, this.password);
+    this.agentService.login(credentials);
+    console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent))
+  }
 
 
   // inputs={

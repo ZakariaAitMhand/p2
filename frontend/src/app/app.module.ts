@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DropFileComponent } from './components/drop-file/drop-file.component';
 import { PropertyService } from './services/property/property.service';
+import { AgentService } from './services/agent/agent.service';
+import { PropertyTypeService } from './services/property-type/property-type.service';
 import { AgentCardComponent } from './components/agent-card/agent-card.component';
 import { PropertyCardComponent } from './components/property-card/property-card.component';
 
@@ -48,7 +50,9 @@ import { PropertyCardComponent } from './components/property-card/property-card.
   providers: [
     InteractionService,
     ImageUploadService,
-    PropertyService
+    PropertyService,
+    AgentService,
+    PropertyTypeService
   ],
   bootstrap: [AppComponent]
 })

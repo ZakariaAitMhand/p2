@@ -31,9 +31,9 @@
         </mat-form-field>
         <mat-form-field>
         <mat-label>Property Type</mat-label>
-        <mat-select>
-            <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType.value">
-            {{propertyType.viewValue}}
+        <mat-select (ngModelChange)="propertyTypeChange($event)" [(ngModel)] = "propertyTypeField">
+            <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
+            {{propertyType.description}}
             </mat-option>
         </mat-select>
         </mat-form-field>
