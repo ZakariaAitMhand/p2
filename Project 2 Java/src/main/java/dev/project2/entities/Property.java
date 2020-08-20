@@ -29,12 +29,12 @@ public class Property
 
     @ManyToOne
     @JoinColumn(name="aid")
-    @JsonManagedReference
+   // @JsonManagedReference
     private Agent agent;
 
     @ManyToOne
     @JoinColumn(name = "ptid")
-    @JsonManagedReference
+  //  @JsonManagedReference
     private PropertyType propertyType;
 
     public Property()

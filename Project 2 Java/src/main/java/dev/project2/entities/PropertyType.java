@@ -17,10 +17,11 @@ public class PropertyType
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
-    @JsonBackReference
-    private List<Property> properties;
-    //private transient List<Property> properties;
+   // @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
+  //  @JsonBackReference
+  //  private List<Property> properties;
+    @OneToMany(mappedBy = "propertyType")
+    private transient List<Property> properties;
 
     public PropertyType()
     {
