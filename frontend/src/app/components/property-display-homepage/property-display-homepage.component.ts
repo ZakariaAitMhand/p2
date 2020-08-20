@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Property } from 'src/app/models/property';
 
 @Component({
   selector: 'app-property-display-homepage',
@@ -7,13 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PropertyDisplayHomepageComponent implements OnInit {
 
+  @Input("property") property:Property;
   constructor() { }
 
+  propertyCard: Property;
   ngOnInit(): void {
+    // console.log(this.property);
+    this.propertyCard = this.property;
   }
 
   propertyClick(){
     alert("property Click")
   }
+
+  
+  
+
 
 }

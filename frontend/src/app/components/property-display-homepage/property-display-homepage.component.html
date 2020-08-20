@@ -2,13 +2,13 @@
     <img mat-card-image src="../../../assets/images/property_card.jpg" alt="House">
     <mat-card-content>
         <mat-card-subtitle id = "priceText">
-            address feet text
+            {{propertyCard.price}}
         </mat-card-subtitle>
         <mat-card-subtitle id ="squarefeetText">
-            {{"12000" | currency}}
+            {{propertyCard.price | currency}}
         </mat-card-subtitle>
         <mat-card-subtitle id = "addressText">
-            square text
+            {{propertyCard.address}}
         </mat-card-subtitle>
     </mat-card-content>
 </mat-card>
