@@ -18,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { DropFileComponent } from './components/drop-file/drop-file.component';
 import { PropertyService } from './services/property/property.service';
+import { AgentCardComponent } from './components/agent-card/agent-card.component';
+
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { PropertyService } from './services/property/property.service';
     MenuComponent,
     BannerComponent,
     DropFileComponent,
+    AgentCardComponent
   ],
   imports: [
     BrowserModule,

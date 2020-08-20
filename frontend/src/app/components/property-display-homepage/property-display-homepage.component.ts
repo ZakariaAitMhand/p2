@@ -9,6 +9,8 @@ import { Property } from 'src/app/models/property';
 export class PropertyDisplayHomepageComponent implements OnInit {
 
   @Input("property") property:Property;
+  //@Input() newProperty:Property;
+
   constructor() { }
 
   propertyCard: Property;
@@ -20,9 +22,8 @@ export class PropertyDisplayHomepageComponent implements OnInit {
   propertyClick(){
     alert("property Click")
   }
-
-  
-  
+//   property: any/*Property*/ = 
+//     {location: this.newProperty.location, price:this.newProperty.price, squareFeet: this.newProperty.squareFeet};
 
 
 }

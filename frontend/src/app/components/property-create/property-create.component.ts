@@ -14,6 +14,8 @@ export class PropertyCreateComponent implements OnInit  {
   }
 
   constructor(private uploadService: ImageUploadService, private propServ:PropertyService){
+  //constructor(private uploadService: ImageUploadService, public propServ:PropertyService){
+
     
   }
 

@@ -1,5 +1,9 @@
 package dev.project2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -25,17 +29,19 @@ public class Property
 
     @ManyToOne
     @JoinColumn(name="aid")
+    @JsonManagedReference
     private Agent agent;
 
     @ManyToOne
-    @JoinColumn(name = "properties")
+    @JoinColumn(name = "ptid")
+    @JsonManagedReference
     private PropertyType propertyType;
 
     public Property()
     {
     }
 
-    public Property(int pid, double price, float square_feet, boolean isSold, String image_url, String location)
+    public Property(int pid, double price, float square_feet, boolean isSold, String image_url, String location, Agent agent, PropertyType propertyType)
     {
         this.pid = pid;
         this.price = price;
@@ -43,6 +49,8 @@ public class Property
         this.isSold = isSold;
         this.image_url = image_url;
         this.location = location;
+        this.agent = agent;
+        this.propertyType = propertyType;
     }
 
     public int getPid()
@@ -103,6 +111,26 @@ public class Property
     public void setLocation(String location)
     {
         this.location = location;
+    }
+
+    public Agent getAgent()
+    {
+        return agent;
+    }
+
+    public void setAgent(Agent agent)
+    {
+        this.agent = agent;
+    }
+
+    public PropertyType getPropertyType()
+    {
+        return propertyType;
+    }
+
+    public void setPropertyType(PropertyType propertyType)
+    {
+        this.propertyType = propertyType;
     }
 
     @Override

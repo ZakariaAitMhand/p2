@@ -1,6 +1,8 @@
 package dev.project2.services;
 
 import dev.project2.entities.Property;
+import dev.project2.repos.PropertyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -10,52 +12,64 @@ import java.util.List;
 @Service
 public class PropertyServiceImp implements PropertyService
 {
+    @Autowired
+    private  PropertyRepository pr;
 
     @Override
     public Property createProperty(Property property)
     {
-        return null;
+        return pr.save(property);
     }
 
     @Override
     public Property getPropertyById(int pid)
     {
-        return null;
+        return pr.findById(pid).get();
     }
 
     @Override
     public List<Property> getAllProperties()
     {
-        return null;
+        return (List<Property>)pr.findAll();
     }
 
+//    TODO
     @Override
-    public List<Property> getPropertiesFromLowToHigh(double price)
+    public List<Property> getPropertiesFromLowToHigh()
     {
-        return null;
+        return pr.findByOrderByPriceAsc();
     }
 
+//    TODO
     @Override
-    public List<Property> getPropertiesFromHighToLow(double price)
+    public List<Property> getPropertiesFromHighToLow()
     {
-        return null;
+        return pr.findByOrderByPriceDesc();
     }
 
+//    TODO
     @Override
     public List<Property> getPropertiesMatchingString(String query)
     {
-        return null;
+        return pr.findByLocationContaining(query);
     }
 
     @Override
     public Property updateProperty(Property property)
     {
-        return null;
+        return pr.save(property);
     }
 
     @Override
     public Boolean deleteProperty(Property property)
     {
-        return null;
+        float before = pr.count();
+        pr.delete(property);
+        float after = pr.count();
+
+        if(before>after)
+            return true;
+
+        return false;
     }
 }

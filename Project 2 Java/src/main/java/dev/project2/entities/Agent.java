@@ -1,5 +1,8 @@
 package dev.project2.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -23,8 +26,10 @@ public class Agent
     @Column(name="phone")
     private String phone;
 
-    @OneToMany(mappedBy = "agent")
+    @OneToMany(mappedBy = "agent", fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<Property> propertyList;
+    //private transient List<Property> propertyList;
 
     public Agent()
     {
@@ -100,6 +105,16 @@ public class Agent
         this.phone = phone;
     }
 
+    public List<Property> getPropertyList()
+    {
+        return propertyList;
+    }
+
+    public void setPropertyList(List<Property> propertyList)
+    {
+        this.propertyList = propertyList;
+    }
+/*
     @Override
     public String toString()
     {
@@ -112,4 +127,5 @@ public class Agent
                 ", phone='" + phone + '\'' +
                 '}';
     }
+    */
 }
