@@ -16,7 +16,7 @@ export class HomePageComponent implements OnInit {
 
   properties:Property[];
 
-  constructor(/*private interactionService:InteractionService,*/ private propServ:PropertyService) { }
+  constructor(/*private interactionService:InteractionService,*/ public propServ:PropertyService) { }
 
   
   
