@@ -3,25 +3,23 @@
 <app-banner></app-banner>
 <div id = "propertyCards">
 
-  <!-- <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>
-  <app-property-display-homepage></app-property-display-homepage>   -->
+  <!-- <app-property-display></app-property-display>
+  <app-property-display></app-property-display>
+  <app-property-display></app-property-display>
+  <app-property-display></app-property-display>
+  <app-property-display></app-property-display>
+  <app-property-display></app-property-display>
+  <app-property-display></app-property-display>   -->
 
 
   <div *ngIf = "!this.propServ.isSearching">
-    <p>Is not searching</p>
     <!-- getting all of the properties from the typescript file in this component
     inputing property model information into new card and repeats till all cards are made  -->
-    <app-property-display-homepage *ngFor = "let p of properties"  [property] ="p"></app-property-display-homepage> 
+    <app-property-card *ngFor = "let p of properties"  [property] ="p"></app-property-card> 
   </div>
 
   <div *ngIf = "this.propServ.isSearching">
-    <p>Is searching</p>
-    <app-property-display-homepage [property] = "property"></app-property-display-homepage> 
+    <app-property-card [property] = "property"></app-property-card> 
   </div>
 
 </div>

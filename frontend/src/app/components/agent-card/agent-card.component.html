@@ -1,0 +1,13 @@
+<mat-card id = "agentCard" (click) = "agentClick()">
+    <div id ="cardContent">
+    <img mat-card-image src="../../../assets/images/user.png" id = "agentProfile" class="rounded" alt="House">
+    <mat-card-content>
+        <mat-card-subtitle id = "Name">
+            {{agentCard.name}}
+        </mat-card-subtitle>
+        <mat-card-subtitle id ="phoneNumber">
+            {{agentCard.phoneNumber}}
+        </mat-card-subtitle>
+    </mat-card-content>
+</div>
+</mat-card>

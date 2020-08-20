@@ -1,0 +1,64 @@
+
+<app-menu></app-menu>
+
+<div id="ImgViewer">
+    <img src="../../../assets/images/1.jpg" [ngClass]="{'widthFull': showPics[0], 'width0': !showPics[0]}" id="Img0" ><!--*ngIf="showPics[0]"-->
+    <img src="../../../assets/images/2.jpg" [ngClass]="{'widthFull': showPics[1], 'width0': !showPics[1]}" id="Img1" ><!--*ngIf="showPics[1]"-->
+    <img src="../../../assets/images/3.jpg" [ngClass]="{'widthFull': showPics[2], 'width0': !showPics[2]}" id="Img2" ><!--*ngIf="showPics[2]"-->
+    <img src="../../../assets/images/4.jpg" [ngClass]="{'widthFull': showPics[3], 'width0': !showPics[3]}" id="Img3" ><!--*ngIf="showPics[3]"-->
+</div>
+
+<div id="ImgThumbnail">
+    <mat-icon (click)="decrementCurrentThumbnailIndex()">keyboard_arrow_left</mat-icon>
+    <img src="../../../assets/images/1.jpg" [ngClass]="{'SelectedThumb': showPics[0]}" id="Thmb0" (click)="thumbnailClick(0)">
+    <img src="../../../assets/images/2.jpg" [ngClass]="{'SelectedThumb': showPics[1]}" id="Thmb1" (click)="thumbnailClick(1)">
+    <img src="../../../assets/images/3.jpg" [ngClass]="{'SelectedThumb': showPics[2]}" id="Thmb2" (click)="thumbnailClick(2)">
+    <img src="../../../assets/images/4.jpg" [ngClass]="{'SelectedThumb': showPics[3]}" id="Thmb3" (click)="thumbnailClick(3)">
+    <mat-icon (click)="incrementCurrentThumbnailIndex()">keyboard_arrow_right</mat-icon>
+</div>
+
+
+
+
+
+
+
+
+<!-- <ngb-carousel>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/1.jpg" alt="Angular Carousel 1">
+      </div>
+      <div class="carousel-caption">
+        <h3>Title Goes Here</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/2.jpg" alt="Angular Carousel 2">
+      </div>
+      <div class="carousel-caption">
+        <h3>Title Goes Here</h3>
+        <p>Consectetur tortor volutpat pretium.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/3.jpg" alt="Angular Carousel 3">
+      </div>
+      <div class="carousel-caption">
+        <h3>Title Goes Here</h3>
+        <p>Consectetur tortor volutpat pretium.</p>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="picsum-img-wrapper">
+        <img src="../../../assets/images/4.jpg" alt="Angular Carousel 4">
+      </div>
+      <div class="carousel-caption">
+        <h3>Title Goes Here</h3>
+        <p>Consectetur tortor volutpat pretium.</p>
+      </div>
+    </ng-template>
+  </ngb-carousel> -->

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PropertyDisplayHomepageComponent } from './property-display-homepage.component';
+import { PropertyDisplayComponent } from './property-display.component';
 
 describe('PropertyDisplayHomepageComponent', () => {
   let component: PropertyDisplayHomepageComponent;

@@ -17,5 +17,6 @@ export class Agent {
         this.email = email;
         this.phone = phone;
         this.propertyList = propertyList;
+
     }
 }
