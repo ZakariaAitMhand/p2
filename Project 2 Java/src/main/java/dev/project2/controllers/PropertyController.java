@@ -26,48 +26,48 @@ import dev.project2.services.AgentService;
 @CrossOrigin("*") //enable cors anywhere
 public class PropertyController {
 
-	@Autowired
-	PropertyService ps;
-	
-	@RequestMapping(value = "/properties", method = RequestMethod.GET)
-	public List<Property> getAllPoperties(@RequestParam(required = false) String location){
-		
-		if(location != null) {
-			return this.ps.getPropertiesMatchingString(location);
-		}
-		
-		return this.ps.getAllProperties();
-	}
-	
-	@RequestMapping(value = "/properties/{id}", method = RequestMethod.GET)
-	public Property getPropertyById(@PathVariable int id) {
-		return this.ps.getPropertyById(id);
-	}
-	
+    @Autowired
+    PropertyService ps;
 
-	@RequestMapping(value = "/properties", method = RequestMethod.POST)
-	public Property createProperty(@RequestBody Property property) {
-		return this.ps.createProperty(property);
-	}
-	
-	
-	@RequestMapping(value = "/properties", method = RequestMethod.PUT)
-	public Property updateProperty(@RequestBody Property property) {
-		return this.ps.updateProperty(property);
-	}
-	
+    @RequestMapping(value = "/properties", method = RequestMethod.GET)
+    public List<Property> getAllPoperties(@RequestParam(required = false) String location){
 
-	@RequestMapping(value = "/properties/{id}", method = RequestMethod.PUT)
-	public Property updatePropertyId(@RequestBody Property property, @PathVariable int id) {
-		property.setPid(id);
-		return this.ps.updateProperty(property);
-	}
-	
-	
-	
-	
-	
-	
-	
-	
+        if(location != null) {
+            return this.ps.getPropertiesMatchingString(location);
+        }
+
+        return this.ps.getAllProperties();
+    }
+
+    @RequestMapping(value = "/properties/{id}", method = RequestMethod.GET)
+    public Property getPropertyById(@PathVariable int id) {
+        return this.ps.getPropertyById(id);
+    }
+
+
+    @RequestMapping(value = "/properties", method = RequestMethod.POST)
+    public Property createProperty(@RequestBody Property property) {
+        return this.ps.createProperty(property);
+    }
+
+
+    @RequestMapping(value = "/properties", method = RequestMethod.PUT)
+    public Property updateProperty(@RequestBody Property property) {
+        return this.ps.updateProperty(property);
+    }
+
+
+    @RequestMapping(value = "/properties/{id}", method = RequestMethod.PUT)
+    public Property updatePropertyId(@RequestBody Property property, @PathVariable int id) {
+        property.setPid(id);
+        return this.ps.updateProperty(property);
+    }
+
+
+
+
+
+
+
+
 }// end class
