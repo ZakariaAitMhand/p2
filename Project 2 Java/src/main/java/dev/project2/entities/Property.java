@@ -34,7 +34,8 @@ public class Property
     @ManyToOne
     @JoinColumn(name = "ptid")
 //    @JsonManagedReference
-    private transient PropertyType propertyType;
+   // private transient PropertyType propertyType;
+    private PropertyType propertyType;
 
     public Property()
     {
