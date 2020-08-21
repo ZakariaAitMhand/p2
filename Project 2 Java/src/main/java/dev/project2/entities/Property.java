@@ -28,7 +28,7 @@ public class Property
 
     @ManyToOne
     @JoinColumn(name="aid")
-    @JsonManagedReference
+//    @JsonManagedReference
     private Agent agent;
 
     @ManyToOne
