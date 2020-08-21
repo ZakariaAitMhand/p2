@@ -11,8 +11,9 @@ import { PropertyDisplayComponent } from './components/property-display/property
 
 
 const routes: Routes = [
-  {path:"login", component :LoginComponent},
+  // {path:"", redirectTo:"home"},
   {path:"home", component: HomePageComponent},
+  {path:"login", component :LoginComponent},
   {path:"createproperty", component: PropertyCreateComponent},
   {path:"menu", component: MenuComponent},
   {path:"banner", component: BannerComponent},

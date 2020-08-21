@@ -8,11 +8,12 @@
   <button mat-button>Menu 3</button>
 </div>
 
-<img id="logo" src="../../../assets/images/Logo.png" alt="Anglo">
+<img id="logo"  routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">
 <div id="rightMenu">
-  <button mat-button>Agents</button>
-  <button mat-button (click)="createProperty()">Create Property</button>
-  <button mat-button (click)="loginPopup()">Login</button>
+  <button mat-button (click) = "agentsBtnClick()">Agents</button>
+  <button mat-button (click)="createProperty()" *ngIf="agentService.loggedInAgent!==undefined">Create Property</button>
+  <button mat-button (click)="logoutClick()" *ngIf="agentService.loggedInAgent!==undefined">Logout</button>
+  <button mat-button (click)="loginPopup()" *ngIf="agentService.loggedInAgent===undefined">Login</button>
 </div>
 
 <div id="backTransparent" *ngIf="backTransparent"></div>

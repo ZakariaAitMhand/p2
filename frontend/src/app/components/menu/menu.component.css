@@ -1,6 +1,9 @@
 #logo{
     margin: 0 auto;
     display: block;
+    user-select: none;
+    cursor: pointer;
+    outline: none;
 }
 
 #leftMenu{
