@@ -26,7 +26,7 @@ public class Agent
     @Column(name="phone")
     private String phone;
 
-    @OneToMany(mappedBy = "agent")
+    @OneToMany(mappedBy = "agent", fetch = FetchType.EAGER)
 //    @JsonBackReference
     private transient List<Property> propertyList;
 

@@ -17,7 +17,7 @@ public class PropertyType
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "propertyType")
+    @OneToMany(mappedBy = "propertyType", fetch = FetchType.EAGER)
 //    @JsonBackReference
     private transient List<Property> properties;
 
