@@ -22,7 +22,10 @@ const routes: Routes = [
   {path:"agent", component: AgentCardComponent},
   {path:"displayproperty", component :PropertyDisplayComponent},
   {path:"displayagents", component: AgentsDisplayComponent},
-  {path:"agentproperties", component: AgentPropertiesDisplayComponent}
+  {path:"agentproperties", component: AgentPropertiesDisplayComponent},
+
+
+  {path:"**", component: HomePageComponent} // DO NOT PUT ANY PATHS BELOW THIS!!!!!!!!!
 ];
 
 @NgModule({

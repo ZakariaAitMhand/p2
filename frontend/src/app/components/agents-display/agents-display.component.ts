@@ -24,7 +24,7 @@ export class AgentsDisplayComponent implements OnInit {
       "aid": 0,
       "username": "charles",
       "password": "testPassword",
-      "image_url": null,
+      "image_url": "1597967640767asdds/1597967640767house1.JPG,1597967640764asdds/1597967640764house2.JPG,1597967640759asdds/1597967640759house3.JPG,1597967640737asdds/1597967640737house4.JPG",
       "email": "testemail@gmail.com",
       "phone": "444-444-4444",
       "propertyList": [{
@@ -78,7 +78,7 @@ export class AgentsDisplayComponent implements OnInit {
       "aid": 0,
       "username": "James",
       "password": "testPassword",
-      "image_url": null,
+      "image_url": "1597967640767asdds/1597967640767house1.JPG,1597967640764asdds/1597967640764house2.JPG,1597967640759asdds/1597967640759house3.JPG,1597967640737asdds/1597967640737house4.JPG",
       "email": "yes@gmail.com",
       "phone": "333-333-3333",
       "propertyList": null 
@@ -87,7 +87,7 @@ export class AgentsDisplayComponent implements OnInit {
       "aid": 0,
       "username": "Parker",
       "password": "testPassword",
-      "image_url": null,
+      "image_url": "1597967640767asdds/1597967640767house1.JPG,1597967640764asdds/1597967640764house2.JPG,1597967640759asdds/1597967640759house3.JPG,1597967640737asdds/1597967640737house4.JPG",
       "email": "yes@gmail.com",
       "phone": "111-111-1111",
       "propertyList": null 

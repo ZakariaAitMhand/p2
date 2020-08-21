@@ -99,7 +99,7 @@ export class HomePageComponent implements OnInit {
     "pid": 3,
     "price": 100000.0,
     "square_feet": 1234.0,
-    "image_url": "1597960767832addadad/1597960767832smallhouse.png",
+    "image_url": "1598033244661house/15980332446611.jpg,1598033244703house/15980332447032.jpg,1598033244711house/15980332447113.jpg,1598033244719house/15980332447194.jpg",
     "location": "124 anywhere st. Anywhere, NJ 11111",
     "agent": {
         "aid": 3,

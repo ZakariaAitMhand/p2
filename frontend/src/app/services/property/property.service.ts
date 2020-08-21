@@ -30,6 +30,16 @@ export class PropertyService {
     return properties;
   }
 
+  async getAllPropertiesLowToHigh(){
+    const properties:Array<Property> = await this.http.get<Array<Property>>("localhost:8080/properties?lth=true").toPromise();
+    return properties;
+  }
+
+  async getAllPropertiesHighToLow(){
+    const properties:Array<Property> = await this.http.get<Array<Property>>("localhost:8080/properties?htl=true").toPromise();
+    return properties;
+  }
+
   async getPropertyById(id:number):Promise<Property>{
     const property:Property = await this.http.get<Property>(`http://localhost:8080/properties/${id}`).toPromise();
     return property;
