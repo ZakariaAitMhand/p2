@@ -1,0 +1,31 @@
+#Install these:
+####
+npm install leaflet
+npm install @asymmetrik/ngx-leaflet
+npm install --save-dev @types/leaflet
+
+#####
+#Add this line to styles in "angular.json"
+#####
+"styles": [
+              "src/styles.scss",
+              "./node_modules/leaflet/dist/leaflet.css"
+            ],
+#####
+#Add this line to assets in "angular.json"
+#####
+"assets": [
+              "src/favicon.ico",//Should have these already
+              "src/assets",/Should have these already
+              {
+                "glob": "**/*",
+                "input": "./node_modules/leaflet/dist/images",
+                "output": "assets/"
+              }
+            ]
+####
+#Add the following "app.module.ts"
+####
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+
+imports: [LeafletModule]
