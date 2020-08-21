@@ -22,6 +22,8 @@ import { AgentService } from './services/agent/agent.service';
 import { PropertyTypeService } from './services/property-type/property-type.service';
 import { AgentCardComponent } from './components/agent-card/agent-card.component';
 import { PropertyCardComponent } from './components/property-card/property-card.component';
+import { AgentsDisplayComponent } from './components/agents-display/agents-display.component';
+import { AgentPropertiesDisplayComponent } from './components/agent-properties-display/agent-properties-display.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { PropertyCardComponent } from './components/property-card/property-card.
     BannerComponent,
     DropFileComponent,
     AgentCardComponent,
-    PropertyCardComponent
+    PropertyCardComponent,
+    AgentsDisplayComponent,
+    AgentPropertiesDisplayComponent
   ],
   imports: [
     BrowserModule,

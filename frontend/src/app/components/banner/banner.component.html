@@ -1,7 +1,7 @@
 <header>
     <!-- <img src="../../../assets/images/banner.jpg" alt="Anglo" id="bannerImg"/> -->
         <div id="searchContainer">
-            <input matInput id="searchInput" placeholder="Search by Street, city, State, and zip code" #search  (keyup.enter)="onSearchEnter(search.value)" >
+            <input *ngIf = "searchBar" matInput id="searchInput" placeholder="Search by Street, city, State, and zip code" #search  (keyup.enter)="onSearchEnter(search.value)" >
             <mat-icon id="searchIcon" matSuffix (click)="performSearch(search.value)">search</mat-icon>
         </div>
 </header>
