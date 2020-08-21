@@ -70,6 +70,13 @@ public class PropertyController {
         property.setPid(id);
         return this.ps.updateProperty(property);
     }
+    
+    @RequestMapping(value = "/properties/{id}", method = RequestMethod.DELETE)
+    public Boolean deleteProperty(@PathVariable int id) { // Spring does not like returning primitives. Use wrapper classes
+        Property a = this.ps.getPropertyById(id);
+        return this.ps.deleteProperty(a);
+    }
+
 
 
 
