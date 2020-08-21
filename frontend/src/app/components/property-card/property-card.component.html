@@ -1,5 +1,7 @@
 <mat-card id = "propertyCard" (click)="propertyClick()">
+    <mat-icon id="deletePropertyIcon" matSuffix (click)="deletePropertyClick(propertyCard.pid)">cancel</mat-icon>
     <img mat-card-image src= "https://project-p2.s3.amazonaws.com/{{this.cardImage[0]}}" alt="House">
+<!--   <img mat-card-image src="../../../assets/images/property_card.jpg" alt="House"> -->
     <mat-card-content>
         <mat-card-subtitle id = "priceText">
             {{propertyCard.location}}

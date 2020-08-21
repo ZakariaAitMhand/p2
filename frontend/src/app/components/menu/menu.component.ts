@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { InteractionService } from '../../services/interaction-service/interaction.service';
+import { AgentService } from '../../services/agent/agent.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +8,15 @@ import { InteractionService } from '../../services/interaction-service/interacti
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private interactionService:InteractionService) { }
+  constructor(private agentService:AgentService) { }
 
+  isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
+    // console.log("from menu "+this.agentService.loggedInAgent);
+  }
+
+  agentsBtnClick():void{
+    // console.log("loggedInAgent " + this.agentService.loggedInAgent);
   }
 
   backTransparent:boolean=false;
@@ -20,6 +26,10 @@ export class MenuComponent implements OnInit {
   loginPopup(){
     this.backTransparent=true;
     this.LoginContainer=true;
+  }
+
+  logoutClick(){
+    this.agentService.loggedInAgent = undefined;
   }
 
 

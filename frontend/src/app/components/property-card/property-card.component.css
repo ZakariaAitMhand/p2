@@ -31,3 +31,19 @@
     /* color: black;
     font-size: 30px; */
 }
+
+#deletePropertyIcon{
+    position: absolute;
+    z-index: 12;
+    cursor: pointer;
+    float: left;
+    color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 3px 3px black;
+    user-select: none;
+}
+
+#deletePropertyIcon:hover{
+    color: black;
+    box-shadow: 0 0 3px 3px white;
+}

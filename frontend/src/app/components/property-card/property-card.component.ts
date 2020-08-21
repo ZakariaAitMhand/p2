@@ -29,9 +29,14 @@ export class PropertyCardComponent implements OnInit {
   }
 
   propertyClick(){
-    alert("property Click")
+    // alert("property Click")
     this.propServ.propertyImages = this.cardImage;
     this.router.navigate(['/displayproperty'])
+  }
+  
+  deletePropertyClick(id:number){
+    // Call for delete endpoint
+    console.log(id);
   }
 //   property: any/*Property*/ = 
 //     {location: this.newProperty.location, price:this.newProperty.price, squareFeet: this.newProperty.squareFeet};

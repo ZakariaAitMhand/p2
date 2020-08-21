@@ -34,6 +34,7 @@ export class HomePageComponent implements OnInit {
   // }
 
 
+
   lowToHighCost(){
     alert("low to high button");
   }
