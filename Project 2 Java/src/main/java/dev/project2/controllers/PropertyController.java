@@ -29,15 +29,23 @@ public class PropertyController {
     @Autowired
     PropertyService ps;
 
-    @RequestMapping(value = "/properties", method = RequestMethod.GET)
-    public List<Property> getAllPoperties(@RequestParam(required = false) String location){
-
-        if(location != null) {
-            return this.ps.getPropertiesMatchingString(location);
-        }
-
-        return this.ps.getAllProperties();
-    }
+	@RequestMapping(value = "/properties", method = RequestMethod.GET)
+	public List<Property> getAllPoperties(@RequestParam(required = false) String location,@RequestParam(required = false) boolean lth,@RequestParam(required = false) boolean htl ){
+		
+		if(location != null) {
+			return this.ps.getPropertiesMatchingString(location);
+		}
+		
+		if(lth == true) {
+			return this.ps.getPropertiesFromLowToHigh();
+		}
+		
+		if(htl == true) {
+			return this.ps.getPropertiesFromHighToLow();
+		}
+		
+		return this.ps.getAllProperties();
+	}
 
     @RequestMapping(value = "/properties/{id}", method = RequestMethod.GET)
     public Property getPropertyById(@PathVariable int id) {
