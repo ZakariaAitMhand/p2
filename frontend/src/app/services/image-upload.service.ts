@@ -12,14 +12,18 @@ import { environment } from '../../environments/environment'
 export class ImageUploadService {
   fileImport:File[];
   folderImport:string;
+  imageCollection:string[] = [];
 
   createFolderAndUploadImages(file, foldername:string){     
 
-    foldername = foldername.concat(Date.now().toString());
+    foldername = Date.now().toString() + foldername;
     this.folderImport = foldername;
     let newFileName:string = file.name;
-    newFileName = newFileName.concat(Date.now().toString());
-    console.log(foldername + "/" + newFileName);
+    newFileName = Date.now().toString() + newFileName;
+    //console.log(foldername + "/" + newFileName);
+
+    //console.log("checking file name" + newFileName);
+    this.imageCollection.push(foldername + "/" + newFileName);
 
     const contentType = file.type;
     const bucket = new S3(

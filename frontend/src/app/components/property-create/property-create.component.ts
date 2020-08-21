@@ -19,7 +19,7 @@ export class PropertyCreateComponent implements OnInit  {
   priceField:number;
   addressField:string;
   squareFeetField:number;
-
+  propertyImageUrls:string;  
   propertyTypeChange(val){
     // console.log("propertyTypeField " + val.description)
   }
@@ -44,14 +44,18 @@ export class PropertyCreateComponent implements OnInit  {
     
   }
 
+  
   //uploading images to bucket
    newPropertyImages(){
       let imageFiles = this.uploadService.fileImport;
-      console.log(this.addressField);
       let foldername:string = this.addressField.toString();
       for(let image of imageFiles){
         this.uploadService.createFolderAndUploadImages(image, foldername);
       }
+      console.log("property images url" + this.propertyImageUrls);
+      this.propertyImageUrls = this.uploadService.imageCollection.join(",");
+      console.log("The string of images" + this.propertyImageUrls);
+      console.log("imagecollection: " + this.uploadService.imageCollection);
   }
 
 
@@ -74,18 +78,19 @@ export class PropertyCreateComponent implements OnInit  {
         this.priceField, 
         this.addressField, 
         this.squareFeetField, 
-        this.uploadService.folderImport,
+        this.propertyImageUrls,
         this.agentService.loggedInAgent,
         this.propertyTypeField,
         false
         );
       // newProperty = await this.propServ.createProperty(newProperty);
 
-      console.log("Property created: "  + newProperty);
+      //console.log("Property created: "  + JSON.stringify(newProperty));
 
       this.priceField = undefined;
       this.addressField = "";
       this.squareFeetField = undefined;
+      this.uploadService.imageCollection = [];
     }
   }
 }
