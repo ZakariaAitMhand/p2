@@ -1,11 +1,11 @@
 <div id="leftMenu">
-  <button mat-button [matMenuTriggerFor]="animals">Menu 1</button>
+  <!-- <button mat-button [matMenuTriggerFor]="animals">Sort Pricing</button>
   <mat-menu #animals="matMenu">
-    <button mat-menu-item>something 1</button>
-    <button mat-menu-item>something 2</button>
-  </mat-menu>
-  <button mat-button>Menu 2</button>
-  <button mat-button>Menu 3</button>
+    <button mat-menu-item>High to Low</button>
+    <button mat-menu-item>Low to High</button>
+  </mat-menu> -->
+  <button mat-button (click)="lowToHigh()">Low to High</button>
+  <button mat-button (click)="highToLow()">High to Low</button>
 </div>
 
 <img id="logo"  routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">

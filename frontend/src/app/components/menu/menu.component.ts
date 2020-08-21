@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AgentService } from '../../services/agent/agent.service';
 import { Router } from '@angular/router';
+import {PropertyService} from '../../services/property/property.service';
+import {HomePageComponent} from '../home-page/home-page.component';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +11,8 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public agentService:AgentService, private router:Router) { }
+  private homePage:HomePageComponent;
+  constructor(public agentService:AgentService, private router:Router, private propertyService:PropertyService) { }
 
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
@@ -48,5 +51,17 @@ export class MenuComponent implements OnInit {
   createProperty(){
     this.backTransparent=true;
     this.createPropertyContainer=true;
+  }
+
+  async highToLow(){
+    //this.homePage.properties = await this.propertyService.getAllPropertiesHighToLow();
+    console.log("getting all properties high to low");
+
+  }
+
+  async lowToHigh(){
+    //this.homePage.properties = await this.propertyService.getAllPropertiesLowToHigh();
+    console.log("getting all properties low to high");
+
   }
 }
