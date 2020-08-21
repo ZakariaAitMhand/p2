@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AgentService } from '../../services/agent/agent.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -8,7 +9,7 @@ import { AgentService } from '../../services/agent/agent.service';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private agentService:AgentService) { }
+  constructor(public agentService:AgentService, private router:Router) { }
 
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
@@ -16,6 +17,7 @@ export class MenuComponent implements OnInit {
   }
 
   agentsBtnClick():void{
+    this.router.navigate(['/displayagents']);
     // console.log("loggedInAgent " + this.agentService.loggedInAgent);
   }
 
