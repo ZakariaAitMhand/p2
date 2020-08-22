@@ -7,11 +7,12 @@ import { PropertyService } from '../../services/property/property.service'
   templateUrl: './banner.component.html',
   styleUrls: ['./banner.component.css']
 })
+
 export class BannerComponent implements OnInit {
 
   @Input("searchBar") searchBar:boolean = true;
   property:Property;
-   search:string;
+  search:string;
 
   constructor(private propServ:PropertyService) { }
   // srch:string = "fas";
@@ -21,14 +22,14 @@ export class BannerComponent implements OnInit {
 
   performSearch():void{
     alert(this.search);
-    //this.getPropertyByAddress(value);
+    //this.getPropertyByAddress(this.search);
   }
 
-  onSearchEnter() {
+  onSearchEnter():void{
     this.performSearch(); 
   }
 
-  async getPropertyByAddress(value:string){
+  async getPropertyByAddress(searchValue:string){
       //this.property = await this.propServ.getPropertyByAddress(searchValue);
       console.log("Address found: "  + this.property);
   }

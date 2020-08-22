@@ -31,7 +31,8 @@ export class LoginComponent implements OnInit {
     let credentials:Credentials = new Credentials(this.userName, this.password);
     this.agentService.login(credentials);
     console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
-
+    this.agentService.LoginContainer=false;
+    this.agentService.LoginContainerBackTransparent=false;
     // this.router.navigateByUrl('/home');
   }
 
