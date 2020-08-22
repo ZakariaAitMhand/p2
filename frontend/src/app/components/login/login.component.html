@@ -4,11 +4,11 @@
     <mat-card-content>
       <mat-form-field appearance="outline">
         <mat-label>User Name</mat-label>
-        <input matInput placeholder="User Name" [(ngModel)]="userName" required>
+        <input matInput id = "usernameInput" placeholder="User Name" [(ngModel)]="userName" required>
       </mat-form-field>
       <mat-form-field appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput placeholder="Password" [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
+        <input matInput id = "passwordInput" placeholder="Password" [(ngModel)]="password" [type]="hide ? 'password' : 'text'">
         <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
       </mat-form-field>
       <mat-card-footer>

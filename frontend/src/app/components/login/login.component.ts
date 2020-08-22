@@ -3,7 +3,6 @@ import { Agent } from 'src/app/models/agent';
 import { AgentService } from 'src/app/services/agent/agent.service';
 import { Credentials } from 'src/app/models/credentials';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
 
 
 @Component({
@@ -13,7 +12,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private agentService:AgentService, private _snackBar: MatSnackBar) { }
+  constructor(private agentService:AgentService) { }
 
   ngOnInit(): void {
   }
@@ -29,25 +28,14 @@ export class LoginComponent implements OnInit {
   }
 
   loginFct():void{
-    if(this.userName=='' || this.password==''){
-      this.wrongCredentialsAlert();
-    }
-    else{
-      let credentials:Credentials = new Credentials(this.userName, this.password);
-      this.agentService.login(credentials);
-      console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
-      this.agentService.LoginContainer=false;
-      this.agentService.LoginContainerBackTransparent=false;
-      // this.router.navigateByUrl('/home');
-    }
-    
+    let credentials:Credentials = new Credentials(this.userName, this.password);
+    this.agentService.login(credentials);
+    console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
+    this.agentService.LoginContainer=false;
+    this.agentService.LoginContainerBackTransparent=false;
+    // this.router.navigateByUrl('/home');
   }
 
-  wrongCredentialsAlert() {
-    this._snackBar.open("Wrong credentials",'', {
-      duration: 1000,
-    });
-  }
 
   // inputs={
   //   userName: new FormControl('', [Validators.required]),

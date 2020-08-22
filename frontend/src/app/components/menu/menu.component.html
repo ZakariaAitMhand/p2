@@ -11,9 +11,9 @@
 <img id="logo"  routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">
 <div id="rightMenu">
   <button mat-button (click) = "agentsBtnClick()">Agents</button>
-  <button mat-button (click)="createProperty()" *ngIf="agentService.loggedInAgent!==undefined">Create Property</button>
-  <button mat-button (click)="logoutClick()" *ngIf="agentService.loggedInAgent!==undefined">Logout</button>
-  <button mat-button (click)="loginPopup()" *ngIf="agentService.loggedInAgent===undefined">Login</button>
+  <button mat-button id = "agentCreateProperty" (click)="createProperty()" *ngIf="agentService.loggedInAgent!==undefined">Create Property</button>
+  <button mat-button id = "agentLogoutButton" (click)="logoutClick()" *ngIf="agentService.loggedInAgent!==undefined">Logout</button>
+  <button mat-button id = "agentLoginButton" (click)="loginPopup()" *ngIf="agentService.loggedInAgent===undefined">Login</button>
 </div>
 
 <div class="backTransparent" *ngIf="agentService.LoginContainerBackTransparent"></div>
