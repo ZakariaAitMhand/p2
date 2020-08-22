@@ -22,8 +22,10 @@ import { AgentService } from './services/agent/agent.service';
 import { PropertyTypeService } from './services/property-type/property-type.service';
 import { AgentCardComponent } from './components/agent-card/agent-card.component';
 import { PropertyCardComponent } from './components/property-card/property-card.component';
-import { AgentsDisplayComponent } from './components/agents-display/agents-display.component';
-import { AgentPropertiesDisplayComponent } from './components/agent-properties-display/agent-properties-display.component';
+import { AddrToLatLonService } from './services/addr-to-lat-lon/addr-to-lat-lon.service';
+import { StaticMapComponent } from './components/static-map/static-map.component';
+import {LeafletModule} from '@asymmetrik/ngx-leaflet';
+
 
 
 @NgModule({
@@ -38,8 +40,7 @@ import { AgentPropertiesDisplayComponent } from './components/agent-properties-d
     DropFileComponent,
     AgentCardComponent,
     PropertyCardComponent,
-    AgentsDisplayComponent,
-    AgentPropertiesDisplayComponent
+    StaticMapComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +49,8 @@ import { AgentPropertiesDisplayComponent } from './components/agent-properties-d
     MaterialModule,
     FormsModule,
     HttpClientModule,
-    NgxDropzoneModule
+    NgxDropzoneModule,
+    LeafletModule
     
   ],
   providers: [
@@ -56,7 +58,8 @@ import { AgentPropertiesDisplayComponent } from './components/agent-properties-d
     ImageUploadService,
     PropertyService,
     AgentService,
-    PropertyTypeService
+    PropertyTypeService,
+    AddrToLatLonService
   ],
   bootstrap: [AppComponent]
 })

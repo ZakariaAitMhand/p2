@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AgentService } from '../../services/agent/agent.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,44 +8,43 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(public agentService:AgentService, private router:Router) { }
+  constructor(public agentService:AgentService) { }
 
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
     // console.log("from menu "+this.agentService.loggedInAgent);
+    if(localStorage.getItem('agent')){
+      this.agentService.loggedInAgent = JSON.parse(localStorage.getItem('agent'));
+    }
   }
 
   agentsBtnClick():void{
-    this.router.navigate(['/displayagents']);
     // console.log("loggedInAgent " + this.agentService.loggedInAgent);
   }
 
-  backTransparent:boolean=false;
-  LoginContainer:boolean=false;
-  createPropertyContainer:boolean=false;
-
   loginPopup(){
-    this.backTransparent=true;
-    this.LoginContainer=true;
+    this.agentService.LoginContainerBackTransparent=true;
+    this.agentService.LoginContainer=true;
   }
 
   logoutClick(){
     this.agentService.loggedInAgent = undefined;
+    localStorage.setItem('agent', '');
   }
 
 
   loginPopupClose(){
-    this.backTransparent=false;
-    this.LoginContainer=false;
+    this.agentService.LoginContainerBackTransparent=false;
+    this.agentService.LoginContainer=false;
   }
 
   createPropertyClose(){
-    this.backTransparent=false;
-    this.createPropertyContainer=false;
+    this.agentService.createPropertyContainerBlackTransparent=false;
+    this.agentService.createPropertyContainer=false;
   }
 
   createProperty(){
-    this.backTransparent=true;
-    this.createPropertyContainer=true;
+    this.agentService.createPropertyContainerBlackTransparent=true;
+    this.agentService.createPropertyContainer=true;
   }
 }

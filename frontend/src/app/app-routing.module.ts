@@ -7,9 +7,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { BannerComponent } from './components/banner/banner.component';
 import { DropFileComponent } from './components/drop-file/drop-file.component'
 import { AgentCardComponent } from './components/agent-card/agent-card.component';
-import { PropertyDisplayComponent } from './components/property-display/property-display.component'
-import { AgentsDisplayComponent } from './components/agents-display/agents-display.component';
-import { AgentPropertiesDisplayComponent } from './components/agent-properties-display/agent-properties-display.component';
+import { PropertyDisplayComponent } from './components/property-display/property-display.component';
+import { StaticMapComponent } from './components/static-map/static-map.component';
+
 
 const routes: Routes = [
   // {path:"", redirectTo:"home"},
@@ -20,9 +20,8 @@ const routes: Routes = [
   {path:"banner", component: BannerComponent},
   {path:"dropFile", component :DropFileComponent},
   {path:"agent", component: AgentCardComponent},
-  {path:"displayproperty", component :PropertyDisplayComponent},
-  {path:"displayagents", component: AgentsDisplayComponent},
-  {path:"agentproperties", component: AgentPropertiesDisplayComponent}
+  {path:"displayproperty/:{id}", component :PropertyDisplayComponent},
+  {path:"map", component: StaticMapComponent}
 ];
 
 @NgModule({

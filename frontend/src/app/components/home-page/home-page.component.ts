@@ -47,7 +47,6 @@ export class HomePageComponent implements OnInit {
     alert("cost betweeen: " + this.minValue + " and " + this.maxValue);
   }
 
-  
   async getAllProperties(){
     // this.properties = await this.propServ.getAllProperties();
     this.properties = [
@@ -55,7 +54,7 @@ export class HomePageComponent implements OnInit {
         "pid": 1,
         "price": 100000.0,
         "square_feet": 1234.0,
-        "image_url": "1597967640737asdds/1597967640737house4.JPG,1597967640759asdds/1597967640759house3.JPG,1597967640764asdds/1597967640764house2.JPG,1597967640767asdds/1597967640767house1.JPG",
+        "image_url": "property1.png",
         "location": "124 anywhere st. Anywhere, NJ 11111",
         "agent": {
             "aid": 3,
@@ -77,7 +76,7 @@ export class HomePageComponent implements OnInit {
       "pid": 2,
       "price": 100000.0,
       "square_feet": 1234.0,
-      "image_url": "1597967640767asdds/1597967640767house1.JPG,1597967640764asdds/1597967640764house2.JPG,1597967640759asdds/1597967640759house3.JPG,1597967640737asdds/1597967640737house4.JPG",
+      "image_url": "property1.png",
       "location": "124 anywhere st. Anywhere, NJ 11111",
       "agent": {
           "aid": 3,
@@ -99,7 +98,7 @@ export class HomePageComponent implements OnInit {
     "pid": 3,
     "price": 100000.0,
     "square_feet": 1234.0,
-    "image_url": "1597960767832addadad/1597960767832smallhouse.png",
+    "image_url": "property1.png",
     "location": "124 anywhere st. Anywhere, NJ 11111",
     "agent": {
         "aid": 3,
@@ -121,7 +120,7 @@ export class HomePageComponent implements OnInit {
     "pid": 4,
     "price": 100000.0,
     "square_feet": 1234.0,
-    "image_url": "1597960767832addadad/1597960767832smallhouse.png",
+    "image_url": "property1.png",
     "location": "124 anywhere st. Anywhere, NJ 11111",
     "agent": {
         "aid": 3,
@@ -143,7 +142,7 @@ export class HomePageComponent implements OnInit {
       "pid": 5,
       "price": 100000.0,
       "square_feet": 1234.0,
-      "image_url": "1597960767832addadad/1597960767832smallhouse.png",
+      "image_url": "property1.png",
       "location": "124 anywhere st. Anywhere, NJ 11111",
       "agent": {
           "aid": 3,

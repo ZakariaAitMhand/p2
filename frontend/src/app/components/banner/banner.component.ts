@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Property } from 'src/app/models/property';
 import { PropertyService } from '../../services/property/property.service'
-
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
@@ -9,7 +8,6 @@ import { PropertyService } from '../../services/property/property.service'
 })
 export class BannerComponent implements OnInit {
 
-  @Input("searchBar") searchBar:boolean = true;
   property:Property;
 
   constructor(private propServ:PropertyService) { }

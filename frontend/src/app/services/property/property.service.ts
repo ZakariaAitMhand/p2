@@ -10,7 +10,6 @@ import { PropertyType } from 'aws-sdk/clients/iotsitewise';
 export class PropertyService {
  
   isSearching:boolean = false;
-  propertyImages:string[] = [];
 
   constructor(private http:HttpClient) {   }
 

@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AgentsDisplayComponent } from './agents-display.component';
+import { StaticMapComponent } from './static-map.component';
 
-describe('AgentsDisplayComponent', () => {
-  let component: AgentsDisplayComponent;
-  let fixture: ComponentFixture<AgentsDisplayComponent>;
+describe('StaticMapComponent', () => {
+  let component: StaticMapComponent;
+  let fixture: ComponentFixture<StaticMapComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AgentsDisplayComponent ]
+      declarations: [ StaticMapComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AgentsDisplayComponent);
+    fixture = TestBed.createComponent(StaticMapComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
