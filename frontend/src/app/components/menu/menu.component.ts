@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import {PropertyService} from '../../services/property/property.service';
 import {HomePageComponent} from '../home-page/home-page.component';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -17,6 +18,9 @@ export class MenuComponent implements OnInit {
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
     // console.log("from menu "+this.agentService.loggedInAgent);
+    if(localStorage.getItem('agent')){
+      this.agentService.loggedInAgent = JSON.parse(localStorage.getItem('agent'));
+    }
   }
 
   agentsBtnClick():void{
@@ -24,35 +28,34 @@ export class MenuComponent implements OnInit {
     // console.log("loggedInAgent " + this.agentService.loggedInAgent);
   }
 
-  backTransparent:boolean=false;
-  LoginContainer:boolean=false;
-  createPropertyContainer:boolean=false;
 
   loginPopup(){
-    this.backTransparent=true;
-    this.LoginContainer=true;
+    this.agentService.LoginContainerBackTransparent=true;
+    this.agentService.LoginContainer=true;
   }
 
   logoutClick(){
     this.agentService.loggedInAgent = undefined;
+    localStorage.setItem('agent', '');
   }
 
 
   loginPopupClose(){
-    this.backTransparent=false;
-    this.LoginContainer=false;
+    this.agentService.LoginContainerBackTransparent=false;
+    this.agentService.LoginContainer=false;
   }
 
   createPropertyClose(){
-    this.backTransparent=false;
-    this.createPropertyContainer=false;
+    this.agentService.createPropertyContainerBlackTransparent=false;
+    this.agentService.createPropertyContainer=false;
   }
 
   createProperty(){
-    this.backTransparent=true;
-    this.createPropertyContainer=true;
+    this.agentService.createPropertyContainerBlackTransparent=true;
+    this.agentService.createPropertyContainer=true;
   }
 
+  
   async highToLow(){
     //this.homePage.properties = await this.propertyService.getAllPropertiesHighToLow();
     console.log("getting all properties high to low");

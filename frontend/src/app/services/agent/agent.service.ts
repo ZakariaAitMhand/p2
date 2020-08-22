@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Agent } from '../../models/agent';
+import { Property } from 'src/app/models/property';
 import { Credentials } from '../../models/credentials';
 import { HttpClient } from '@angular/common/http';
-import { Property } from 'src/app/models/property';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,15 @@ export class AgentService {
 
   loggedInAgent:Agent;
   agentProperties:Property[];
-
+  
+  LoginContainerBackTransparent:boolean=false;
+  LoginContainer:boolean=false;
+  createPropertyContainerBlackTransparent:boolean=false;
+  createPropertyContainer:boolean=false;
 
   async login(credentials:Credentials):Promise<void>{
     this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
+    localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
     // agent = await this.http.post<Agent>(`http://localhost:8080/agents/`,agent).toPromise();
   }
   

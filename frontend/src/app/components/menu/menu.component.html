@@ -16,13 +16,14 @@
   <button mat-button (click)="loginPopup()" *ngIf="agentService.loggedInAgent===undefined">Login</button>
 </div>
 
-<div id="backTransparent" *ngIf="backTransparent"></div>
-<div id="LoginContainer" *ngIf="LoginContainer">
+<div class="backTransparent" *ngIf="agentService.LoginContainerBackTransparent"></div>
+<div id="LoginContainer" *ngIf="agentService.LoginContainer">
   <mat-icon id="loginCancelIcon" matSuffix (click)="loginPopupClose()">cancel</mat-icon>
   <app-login></app-login>
 </div>
 
-<div id="createPropertyContainer" *ngIf="createPropertyContainer">
+<div class="backTransparent" *ngIf="agentService.createPropertyContainerBlackTransparent"></div>
+<div id="createPropertyContainer" *ngIf="agentService.createPropertyContainer">
   <mat-icon id="createPropertyCancelIcon" matSuffix (click)="createPropertyClose()">cancel</mat-icon>
   <app-property-create></app-property-create>
 </div>

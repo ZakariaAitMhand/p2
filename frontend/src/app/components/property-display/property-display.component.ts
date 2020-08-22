@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { integer } from 'aws-sdk/clients/cloudfront';
-import { PropertyService } from 'src/app/services/property/property.service';
 
 @Component({
   selector: 'app-property-display',
@@ -8,12 +7,9 @@ import { PropertyService } from 'src/app/services/property/property.service';
   styleUrls: ['./property-display.component.css']
 })
 export class PropertyDisplayComponent implements OnInit {
-
-  propImages:string[] = [];
-
-  constructor(private propServ:PropertyService) { }
+  id:number;
+  constructor() { }
   ngOnInit(): void {
-    this.propImages = this.propServ.propertyImages;
   }
 
   showPics:boolean[]=[
