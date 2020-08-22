@@ -13,14 +13,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
-import dev.project2.pages.AgentLoginPage;
+import dev.project2.pages.AgentHomePage;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = "src/test/resources/AgentManageProperties.feature", glue = "dev.project2.steps")
 public class AgentRunner {
 
 	public static WebDriver driver;
-	public static AgentLoginPage alpage;
+	public static AgentHomePage ahpage;
 
 	@BeforeClass
 	public static void setup() {
@@ -31,7 +31,7 @@ public class AgentRunner {
 
 		driver = new ChromeDriver();
 
-		alpage = new AgentLoginPage(driver);
+		ahpage = new AgentHomePage(driver);
 	}
 
 	@AfterClass
