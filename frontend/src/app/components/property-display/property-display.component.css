@@ -2,8 +2,8 @@
     position: relative;
     top: 1em;
     left: 3em;
-    width: 640px;
-    height: 480px;
+    width: 646px;
+    height: 485px;
     box-shadow: 0 0 7px 0px grey;
     border: 3px solid black;
     overflow: hidden;
@@ -19,30 +19,30 @@
     position: relative;
     left: 1em;
     top: 1em;
+    width: 100%;
+    overflow-x: scroll;
     padding: 10px;
     user-select: none;
 }
 
-#ImgThumbnail mat-icon:hover{
-    background-color: #EEE;
-}
 #ImgThumbnail mat-icon{
     float: left;
-    width: 26px;
-    margin: 0 1em;
+    width: 40px;
+    margin-left: 1em;
     border: 1px solid #000;
     box-shadow: 0px 0px 6px 0px;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     user-select: none;
-    padding: 30px 7px;
+    height: 80px;
+    padding: 25px 7px;
 }
 
 #ImgThumbnail img{
     float: left;
     width: 100px;
-    margin: 0 .5em;
+    margin-left: 1em;
     border: 1px solid #BBB;
     box-shadow: 0px 0px 6px 0px;
     cursor: pointer;
