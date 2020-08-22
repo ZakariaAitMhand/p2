@@ -25,6 +25,8 @@ const routes: Routes = [
   {path:"map", component: StaticMapComponent},
   {path:"displayagents", component: AgentsDisplayComponent},
   {path:"agentproperties", component: AgentPropertiesDisplayComponent},
+
+
   {path:"**", component: HomePageComponent} // DO NOT PUT ANY PATHS BELOW THIS!!!!!!!!!
 ];
 
