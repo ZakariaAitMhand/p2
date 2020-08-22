@@ -17,7 +17,6 @@
     inputing property model information into new card and repeats till all cards are made  -->
     <app-property-card *ngFor = "let p of properties"  [property] ="p"></app-property-card> 
   </div>
-
   <div *ngIf = "this.propServ.isSearching">
     <app-property-card [property] = "property"></app-property-card> 
   </div>

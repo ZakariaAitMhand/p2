@@ -1,25 +1,29 @@
-<mat-card id = "propertyCard" (click)="propertyClick()">
-    <mat-icon id="deletePropertyIcon" matSuffix (click)="deletePropertyClick(propertyCard.pid)">cancel</mat-icon>
-    <img mat-card-image src= "https://project-p2.s3.amazonaws.com/{{this.cardImage[0]}}" alt="House">
-<!--   <img mat-card-image src="../../../assets/images/property_card.jpg" alt="House"> -->
-    <mat-card-content>
-        <mat-card-subtitle id = "priceText">
-            {{propertyCard.location}}
-        </mat-card-subtitle>
-        <mat-card-subtitle id ="squarefeetText">
-            {{propertyCard.price | currency}}
-        </mat-card-subtitle>
-        <mat-card-subtitle id = "addressText">
-            {{propertyCard.square_feet}}
+<mat-card id = "propertyCard">
+    <div *ngIf="agentService.loggedInAgent" id="deletePropertyIcon" (click)="deletePropertyClick(propertyCard.pid)">
+        <mat-icon matSuffix>cancel</mat-icon>
+    </div>
 
-        <!-- {{property.price}}
-        </mat-card-subtitle>
-        <mat-card-subtitle id ="squarefeetText">
-            {{property.price | currency}}
-        </mat-card-subtitle>
-        <mat-card-subtitle id = "addressText">
-            {{property.address}} -->
-          
-        </mat-card-subtitle>
-    </mat-card-content>
+    <div id="cardContainer" routerLink="/displayproperty/{{propertyCard.pid}}">
+        <img mat-card-image src="../../../assets/images/property_card.jpg" alt="{{propertyCard.propertyType.description}}">
+        <mat-card-content>
+            <mat-card-subtitle id = "priceText">
+                {{propertyCard.location}}
+            </mat-card-subtitle>
+            <mat-card-subtitle id ="squarefeetText">
+                {{propertyCard.price | currency}}
+            </mat-card-subtitle>
+            <mat-card-subtitle id = "addressText">
+                {{propertyCard.square_feet}}
+
+            <!-- {{property.price}}
+            </mat-card-subtitle>
+            <mat-card-subtitle id ="squarefeetText">
+                {{property.price | currency}}
+            </mat-card-subtitle>
+            <mat-card-subtitle id = "addressText">
+                {{property.address}} -->
+            
+            </mat-card-subtitle>
+        </mat-card-content>
+    </div>
 </mat-card>
