@@ -13,17 +13,21 @@ Feature: Manage properties available for purchase
 		When The agent clicks the submit button
 		Then There is an alert displaying credential error
 
-	Scenario: An agent wanting to see all managed properties
-		Given The agent is on the agent portal page
-		Then The agent should see all their managed properties
-
-	Scenario: An agent is updating a property 
+	Scenario: An agent is creating a property 
 		Given The agent is on the agent portal 
-		When The agent can modify mandatory fields
-		When The agent clicks on the update property button
-		Then Alert box to let agent know if a property was updated or not
+		When The agent clicks the create property button
+		When The agent fills out the square feet field
+		When The agent fills out the price field
+		When The agent fills out the address
+		When The agent selects the property type
+		When The agent adds an image
+		When The agent presses the create button
+		Then A property is created
 
-	Scenario: An agent wants to see a specific property
-		Given The agent is on the agent portal page
-		When The agent clicks on a property card
-		Then The agent is redirected to a page with the correct property credentials
+	Scenario: An agent is deleting a property 
+		Given The agent is logged in
+		When The agent is on the home page
+		When The agent presses the x button on a property
+		Then The property is deleted
+		 
+		
