@@ -62,7 +62,8 @@ export class PropertyCreateComponent implements OnInit  {
 
   
 
-  async createProperty(){
+  // async 
+  createProperty(){
      if(this.priceField == 0 || this.priceField === undefined 
         || this.addressField == "" || this.addressField == undefined 
         || this.squareFeetField == 0 || this.squareFeetField === undefined 
@@ -82,9 +83,9 @@ export class PropertyCreateComponent implements OnInit  {
         this.propertyTypeField,
         false
         );
-      
-        newProperty = await this.propServ.createProperty(newProperty);
+      // newProperty = await this.propServ.createProperty(newProperty);
 
+      //console.log("Property created: "  + JSON.stringify(newProperty));
 
       this.priceField = undefined;
       this.addressField = "";

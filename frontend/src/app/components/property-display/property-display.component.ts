@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { integer } from 'aws-sdk/clients/cloudfront';
+import { PropertyService } from '../../services/property/property.service';
 
 @Component({
   selector: 'app-property-display',
@@ -7,9 +9,16 @@ import { integer } from 'aws-sdk/clients/cloudfront';
   styleUrls: ['./property-display.component.css']
 })
 export class PropertyDisplayComponent implements OnInit {
-  id:number;
-  constructor() { }
+  id:number; // retrieved from the URL parameter
+
+  propertyAdress="84 columbia avenue 07307";
+  
+  constructor(private propertyService:PropertyService, private route: ActivatedRoute) {
+    
+    this.id = Number(this.route.snapshot.params.id);
+  }
   ngOnInit(): void {
+    // this.propertyService.getPropertyById(this.id);
   }
 
   showPics:boolean[]=[
