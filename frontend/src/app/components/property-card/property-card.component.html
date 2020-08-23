@@ -4,7 +4,7 @@
     </div>
 
     <div id="cardContainer" routerLink="/displayproperty/{{propertyCard.pid}}">
-        <img mat-card-image src="../../../assets/images/property_card.jpg" alt="{{propertyCard.propertyType.description}}">
+        <img mat-card-image [src]="baseImage" alt="{{propertyCard.propertyType.description}}">
         <mat-card-content>
             <mat-card-subtitle id = "priceText">
                 {{propertyCard.location}}

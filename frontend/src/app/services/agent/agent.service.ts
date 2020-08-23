@@ -23,8 +23,8 @@ export class AgentService {
   createPropertyContainer:boolean=false;
 
   async login(credentials:Credentials):Promise<void>{
-    this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
-    localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
+    // this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
+    
     // agent = await this.http.post<Agent>(`http://localhost:8080/agents/`,agent).toPromise();
     // this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
     // localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
@@ -33,10 +33,10 @@ export class AgentService {
     const agents:Array<Agent> = await this.getAllAgents();
 
     for(let agent of agents){
-      if(agent.username === credentials.username){
-        if(agent.password === credentials.password){
-          this.loggedInAgent = agent;
-        }
+      if(agent.username === credentials.username && agent.password === credentials.password){
+        this.loggedInAgent = agent;
+        localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
+        break;
       }
     }
 

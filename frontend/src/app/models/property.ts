@@ -1,6 +1,6 @@
 import { Agent } from './agent';
 import { PropertyType } from './property-type';
-export class Property {
+export class Property{
     
     pid:number = 0;
     price:number = 0;

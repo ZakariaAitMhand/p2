@@ -14,6 +14,8 @@ export class PropertyService {
   url:string;
   sort:number; // 0 is get all properties // 1 is sort from low to high // 2 is sort from high to low 
 
+  ImageBaseUrl= `https://project-p2.s3.amazonaws.com/`;
+
   constructor(private http:HttpClient) {
     this.url = "http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/";
   }

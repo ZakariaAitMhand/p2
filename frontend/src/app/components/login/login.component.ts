@@ -27,13 +27,13 @@ export class LoginComponent implements OnInit {
   
   }
 
-  loginFct():void{
+  async loginFct():Promise<void>{
     if(this.userName=='' || this.password==''){
       this.wrongCredentialsAlert();
     }
     else{
       let credentials:Credentials = new Credentials(this.userName, this.password);
-      this.agentService.login(credentials);
+      await this.agentService.login(credentials);
 
       if(this.agentService.loggedInAgent == null){
         this.wrongCredentialsAlert();
