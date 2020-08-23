@@ -32,9 +32,10 @@ export class PropertyCardComponent implements OnInit {
     // alert("property Click")
   }
   
-  deletePropertyClick(id:number){
+  async deletePropertyClick(id:number){
     alert(id);
-    this.propertyService.deletePropertyById(id);
+    await this.propertyService.deletePropertyById(id);
+    location.reload();
   }
 //   property: any/*Property*/ = 
 //     {location: this.newProperty.location, price:this.newProperty.price, squareFeet: this.newProperty.squareFeet};

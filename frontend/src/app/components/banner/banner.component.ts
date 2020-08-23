@@ -11,8 +11,8 @@ import { PropertyService } from '../../services/property/property.service'
 export class BannerComponent implements OnInit {
 
   @Input("searchBar") searchBar:boolean = true;
-  property:Property;
-  search:string;
+  properties:Property[];
+  search:string = (localStorage.getItem('searchValue')=='')?localStorage.getItem('searchValue'):'';
 
   constructor(private propServ:PropertyService) { }
   // srch:string = "fas";
@@ -21,7 +21,7 @@ export class BannerComponent implements OnInit {
 
 
   performSearch():void{
-    alert(this.search);
+    // alert(this.search);
     this.getPropertyByAddress(this.search);
   }
 
@@ -30,7 +30,11 @@ export class BannerComponent implements OnInit {
   }
 
   async getPropertyByAddress(searchValue:string){
-      this.property = await this.propServ.getPropertyByAddress(searchValue);
-      console.log("Address found: "  + this.property);
+      this.properties = await this.propServ.getPropertyByAddress(searchValue);
+      localStorage.setItem('searchedProperties',JSON.stringify(this.properties));
+      localStorage.setItem('searchValue',searchValue);
+      // console.log("Address found: ");
+      // console.log(this.properties);
+      location.reload();
   }
 }

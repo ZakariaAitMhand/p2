@@ -8,7 +8,7 @@
   <button mat-button (click)="highToLow()">High to Low</button>
 </div>
 
-<img id="logo"  routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">
+<img id="logo" (click)="homeClick()" routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">
 <div id="rightMenu">
   <button mat-button (click) = "agentsBtnClick()">Agents</button>
   <button mat-button (click)="createProperty()" *ngIf="agentService.loggedInAgent!==undefined">Create Property</button>
