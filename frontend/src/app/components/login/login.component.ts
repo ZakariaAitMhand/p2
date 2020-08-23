@@ -13,11 +13,10 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private agentService:AgentService, private _snackBar: MatSnackBar) { }
+  constructor(private agentService:AgentService, private _snackBar: MatSnackBar, private router:Router) { }
 
   ngOnInit(): void {
   }
-  router:Router;
   hide:boolean = true;
   userName:string='';
   password:string='';
@@ -40,11 +39,10 @@ export class LoginComponent implements OnInit {
         this.wrongCredentialsAlert();
         return;
       }
-      
       console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
       this.agentService.LoginContainer=false;
       this.agentService.LoginContainerBackTransparent=false;
-      // this.router.navigateByUrl('/home');
+      location.reload();
     }
     
   }
