@@ -18,7 +18,7 @@ export class PropertyDisplayComponent implements OnInit {
     this.id = Number(this.route.snapshot.params.id);
   }
   ngOnInit(): void {
-    // this.propertyService.getPropertyById(this.id);
+     this.propertyService.getPropertyById(this.id);
   }
 
   showPics:boolean[]=[

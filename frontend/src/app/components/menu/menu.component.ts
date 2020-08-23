@@ -12,7 +12,7 @@ import {HomePageComponent} from '../home-page/home-page.component';
 })
 export class MenuComponent implements OnInit {
 
-  private homePage:HomePageComponent;
+  private homePage:HomePageComponent = new HomePageComponent(this.propertyService);
   constructor(public agentService:AgentService, private router:Router, private propertyService:PropertyService) { }
 
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
@@ -57,14 +57,12 @@ export class MenuComponent implements OnInit {
 
   
   async highToLow(){
-    //this.homePage.properties = await this.propertyService.getAllPropertiesHighToLow();
-    console.log("getting all properties high to low");
-
+    localStorage.setItem('sortNumber', '2');
+    location.reload();
   }
 
   async lowToHigh(){
-    //this.homePage.properties = await this.propertyService.getAllPropertiesLowToHigh();
-    console.log("getting all properties low to high");
-
+    localStorage.setItem('sortNumber', '1');
+    location.reload();
   }
 }

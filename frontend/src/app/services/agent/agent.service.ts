@@ -31,12 +31,18 @@ export class AgentService {
   // }
 
   async getAllAgents():Promise<Array<Agent>>{
-    const agents:Array<Agent> = await this.http.get<Array<Agent>>("http://localhost:8080/agents").toPromise();
+    const agents:Array<Agent> = await this.http.get<Array<Agent>>("http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents").toPromise();
     return agents;
   }
 
   async getAgentById(id:number):Promise<Agent>{
-    const agent:Agent = await this.http.get<Agent>(`http://localhost:8080/agents/${id}`).toPromise();
+    const agent:Agent = await this.http.get<Agent>(`http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents/${id}`).toPromise();
     return agent;
   }
+
+  async getAllAgentsProperties(aId:number):Promise<Array<Property>>{
+    const agentsProperty:Array<Property> = await this.http.get<Array<Property>>(`http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents/${aId}/properties`).toPromise();
+    return agentsProperty;
+  }
+
 }

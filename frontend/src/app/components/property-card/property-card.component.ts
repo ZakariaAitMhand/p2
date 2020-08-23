@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Property } from 'src/app/models/property';
 import { AgentService } from '../../services/agent/agent.service';
+import { PropertyService } from 'src/app/services/property/property.service';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class PropertyCardComponent implements OnInit {
   @Input("property") property:Property;
   //@Input() newProperty:Property;
 
-  constructor(public agentService:AgentService) { }
+  constructor(public agentService:AgentService, public propertyService: PropertyService) { }
 
   propertyCard: Property;
   ngOnInit(): void {
@@ -26,8 +27,8 @@ export class PropertyCardComponent implements OnInit {
   }
   
   deletePropertyClick(id:number){
-    // Call for delete endpoint
     alert(id);
+    this.propertyService.deletePropertyById(id);
   }
 //   property: any/*Property*/ = 
 //     {location: this.newProperty.location, price:this.newProperty.price, squareFeet: this.newProperty.squareFeet};
