@@ -3,6 +3,7 @@ package dev.project2.steps;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
@@ -135,16 +136,14 @@ public class AgentSteps {
 
 	@Then("^A property is created$")
 	public void a_property_is_created() throws Throwable {
+		
+		ahPage.logoutButton.click();
 		Assertions.assertEquals(ps.getAllProperties().size(), propertyCount);
-		propertyCount = 0;
 	}
 	
 	@Given("^The agent is logged in$")
 	public void the_agent_is_logged_in() throws Throwable {
 		driver.get("http://localhost:4200/home");
-		if(ahPage.loginDisplayButton.getText() == "logout") {
-			ahPage.logoutButton.click();
-		}
 		ahPage.loginDisplayButton.click();
 		ahPage.loginUsernameInput.sendKeys("testUsername");
 		ahPage.loginPasswordInput.sendKeys("testPassword");
@@ -160,7 +159,6 @@ public class AgentSteps {
 	public void the_agent_presses_the_x_button_on_a_property() throws Throwable {
 		propertyCount = ps.getAllProperties().size() - 1;
 		ahPage.deleteButton.click();
-	    
 	}
 
 	@Then("^The property is deleted$")
