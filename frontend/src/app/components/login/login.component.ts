@@ -35,6 +35,12 @@ export class LoginComponent implements OnInit {
     else{
       let credentials:Credentials = new Credentials(this.userName, this.password);
       this.agentService.login(credentials);
+
+      if(this.agentService.loggedInAgent == null){
+        this.wrongCredentialsAlert();
+        return;
+      }
+      
       console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
       this.agentService.LoginContainer=false;
       this.agentService.LoginContainerBackTransparent=false;

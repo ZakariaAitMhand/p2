@@ -15,17 +15,15 @@ export class ImageUploadService {
   imageCollection:string[] = [];
 
   createFolderAndUploadImages(file, foldername:string){     
-    // foldername = Date.now().toString() + foldername;
+
+    foldername = Date.now().toString() + foldername;
     this.folderImport = foldername;
     let newFileName:string = file.name;
     newFileName = Date.now().toString() + newFileName;
     //console.log(foldername + "/" + newFileName);
 
-    // console.log("checking file name" + newFileName);
-    // FOR DEBUG ONLY
-    console.log("Filepath/Filename: " + foldername +"/"+ file.name);
-    // this.imageCollection.push(foldername + "/" + newFileName);
-    this.imageCollection.push(foldername + "/" + file.name);
+    //console.log("checking file name" + newFileName);
+    this.imageCollection.push(foldername + "/" + newFileName);
 
     const contentType = file.type;
     const bucket = new S3(

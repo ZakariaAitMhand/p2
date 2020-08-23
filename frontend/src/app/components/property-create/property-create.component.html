@@ -31,14 +31,14 @@
         </mat-form-field>
         <mat-form-field>
         <mat-label>Property Type</mat-label>
-        <mat-select id ="propertyTypeInput" (ngModelChange)="propertyTypeChange($event)" [(ngModel)] = "propertyTypeField">
+        <mat-select (ngModelChange)="propertyTypeChange($event)" [(ngModel)] = "propertyTypeField">
             <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType">
             {{propertyType.description}}
             </mat-option>
         </mat-select>
         </mat-form-field>
-        <app-drop-file id = "uploadImageButton"></app-drop-file>
-        <button mat-button color="accent" id = "agentPropertyCreation" (click) = "createProperty()">Create</button>
+        <app-drop-file></app-drop-file>
+        <button mat-button color="accent" (click) = "createProperty()">Create</button>
         <!-- <button mat-button color="accent">Cancel</button> -->
 </mat-card>
 

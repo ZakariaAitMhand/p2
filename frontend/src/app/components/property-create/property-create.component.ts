@@ -46,11 +46,11 @@ export class PropertyCreateComponent implements OnInit  {
 
   
   //uploading images to bucket
-   newPropertyImages(propertyId:string){
+   newPropertyImages(){
       let imageFiles = this.uploadService.fileImport;
       let foldername:string = this.addressField.toString();
       for(let image of imageFiles){
-        this.uploadService.createFolderAndUploadImages(image, propertyId);
+        this.uploadService.createFolderAndUploadImages(image, foldername);
       }
       console.log("property images url" + this.propertyImageUrls);
       this.propertyImageUrls = this.uploadService.imageCollection.join(",");
@@ -71,7 +71,7 @@ export class PropertyCreateComponent implements OnInit  {
         alert("empty fields");
      }
     else{
-      
+      this.newPropertyImages();
       let newProperty = new Property(
         0,
         this.priceField, 
@@ -82,12 +82,9 @@ export class PropertyCreateComponent implements OnInit  {
         this.propertyTypeField,
         false
         );
+      
+        newProperty = await this.propServ.createProperty(newProperty);
 
-      newProperty = await this.propServ.createProperty(newProperty);
-      // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
-      // We get the PID created and pass it to the NEWPROPERTYIMAGES() function
-      // This should be the filename the image is stored under.
-      this.newPropertyImages(newProperty["pid"].toString());
 
       this.priceField = undefined;
       this.addressField = "";
