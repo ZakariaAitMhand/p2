@@ -1,6 +1,6 @@
 <mat-card id = "propertyCard">
-    <div *ngIf="agentService.loggedInAgent" id="deletePropertyIcon" (click)="deletePropertyClick(propertyCard.pid)">
-        <mat-icon matSuffix>cancel</mat-icon>
+    <div *ngIf="isDeletable" id="deletePropertyIcon" (click)="deletePropertyClick(propertyCard.pid)">
+        <mat-icon  matSuffix>cancel</mat-icon>
     </div>
 
     <div id="cardContainer" routerLink="/displayproperty/{{propertyCard.pid}}">

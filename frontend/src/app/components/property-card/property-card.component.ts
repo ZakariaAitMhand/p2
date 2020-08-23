@@ -17,9 +17,15 @@ export class PropertyCardComponent implements OnInit {
   constructor(public agentService:AgentService, public propertyService: PropertyService) { }
 
   propertyCard: Property;
+  isDeletable:boolean;
   ngOnInit(): void {
     // console.log(this.property);
     this.propertyCard = this.property;
+    console.log(this.property);
+    console.log(this.agentService.loggedInAgent);
+    this.isDeletable = (this.agentService.loggedInAgent
+        && this.property.agent.aid == this.agentService.loggedInAgent.aid)
+                        ?true:false;
   }
 
   propertyClick(id){

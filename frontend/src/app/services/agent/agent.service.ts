@@ -9,10 +9,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AgentService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient) {
+    this.url = "http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/";
+  }
 
   loggedInAgent:Agent;
   agentProperties:Property[];
+  url:string;
   
   LoginContainerBackTransparent:boolean=false;
   LoginContainer:boolean=false;
@@ -23,6 +26,21 @@ export class AgentService {
     this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
     localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
     // agent = await this.http.post<Agent>(`http://localhost:8080/agents/`,agent).toPromise();
+    // this.loggedInAgent = new Agent(1, 'username', 'password', 'image_url', 'email', 'phone',[]);
+    // localStorage.setItem('agent', JSON.stringify(this.loggedInAgent));
+     //agent = await this.http.post<Agent>(`http://localhost:8080/agents/`,agent).toPromise();
+
+    const agents:Array<Agent> = await this.getAllAgents();
+
+    for(let agent of agents){
+      if(agent.username === credentials.username){
+        if(agent.password === credentials.password){
+          this.loggedInAgent = agent;
+        }
+      }
+    }
+
+    //this.loggedInAgent = await this.http.get<Agent>(`http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents`).toPromise();
   }
   
   // async createAgent(agent:Agent):Promise<Agent>{
@@ -31,17 +49,17 @@ export class AgentService {
   // }
 
   async getAllAgents():Promise<Array<Agent>>{
-    const agents:Array<Agent> = await this.http.get<Array<Agent>>("http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents").toPromise();
+    const agents:Array<Agent> = await this.http.get<Array<Agent>>(this.url+"agents").toPromise();
     return agents;
   }
 
   async getAgentById(id:number):Promise<Agent>{
-    const agent:Agent = await this.http.get<Agent>(`http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents/${id}`).toPromise();
+    const agent:Agent = await this.http.get<Agent>(this.url+`agents/${id}`).toPromise();
     return agent;
   }
 
   async getAllAgentsProperties(aId:number):Promise<Array<Property>>{
-    const agentsProperty:Array<Property> = await this.http.get<Array<Property>>(`http://ec2-18-191-220-22.us-east-2.compute.amazonaws.com:8080/agents/${aId}/properties`).toPromise();
+    const agentsProperty:Array<Property> = await this.http.get<Array<Property>>(this.url+`agents/${aId}/properties`).toPromise();
     return agentsProperty;
   }
 

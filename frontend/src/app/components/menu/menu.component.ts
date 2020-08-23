@@ -37,6 +37,7 @@ export class MenuComponent implements OnInit {
   logoutClick(){
     this.agentService.loggedInAgent = undefined;
     localStorage.setItem('agent', '');
+    location.reload();
   }
 
 
