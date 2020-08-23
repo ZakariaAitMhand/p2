@@ -82,7 +82,7 @@ export class PropertyCreateComponent implements OnInit  {
         this.propertyTypeField,
         false
         );
-      
+
       newProperty = await this.propServ.createProperty(newProperty);
       // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
       // We get the PID created and pass it to the NEWPROPERTYIMAGES() function

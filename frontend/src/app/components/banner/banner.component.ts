@@ -22,7 +22,7 @@ export class BannerComponent implements OnInit {
 
   performSearch():void{
     alert(this.search);
-    //this.getPropertyByAddress(this.search);
+    this.getPropertyByAddress(this.search);
   }
 
   onSearchEnter():void{
@@ -30,7 +30,7 @@ export class BannerComponent implements OnInit {
   }
 
   async getPropertyByAddress(searchValue:string){
-      //this.property = await this.propServ.getPropertyByAddress(searchValue);
+      this.property = await this.propServ.getPropertyByAddress(searchValue);
       console.log("Address found: "  + this.property);
   }
 }
