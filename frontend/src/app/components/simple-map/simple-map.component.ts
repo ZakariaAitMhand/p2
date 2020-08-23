@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { GetMapService } from "../../services/get-map/get-map.service";
 
 @Component({
@@ -8,6 +8,7 @@ import { GetMapService } from "../../services/get-map/get-map.service";
 })
 export class SimpleMapComponent implements OnInit {
 
+  @Input("address") address:string;
   imagePath: string;
 
   constructor(private getMap:GetMapService) { }
@@ -15,12 +16,12 @@ export class SimpleMapComponent implements OnInit {
   ngOnInit(): void {
     // For testing Purposes only
     // COMMENT OUT FOR PRODUCTION/LIVE
-    this.testMap();
+    this.testMap(this.address);
   }
 
-  async testMap()
+  async testMap(address)
   {
-    await this.getMap.getMap("84 columbia avenue 07307");
+    await this.getMap.getMap(address);
     this.imagePath = this.getMap.imgUrl;
   }
 }

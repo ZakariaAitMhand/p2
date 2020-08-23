@@ -24,6 +24,7 @@ import { AgentCardComponent } from './components/agent-card/agent-card.component
 import { PropertyCardComponent } from './components/property-card/property-card.component';
 import { AgentsDisplayComponent } from './components/agents-display/agents-display.component';
 import { AgentPropertiesDisplayComponent } from './components/agent-properties-display/agent-properties-display.component';
+import { SimpleMapComponent } from './components/simple-map/simple-map.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { AgentPropertiesDisplayComponent } from './components/agent-properties-d
     AgentCardComponent,
     PropertyCardComponent,
     AgentsDisplayComponent,
-    AgentPropertiesDisplayComponent
+    AgentPropertiesDisplayComponent,
+    SimpleMapComponent
   ],
   imports: [
     BrowserModule,

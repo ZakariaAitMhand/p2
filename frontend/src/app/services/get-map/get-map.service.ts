@@ -34,7 +34,7 @@ export class GetMapService {
     // let details = await response.json();
 
 
-    this.imgUrl = `https://www.mapquestapi.com/staticmap/v5/map?key=${this.key}&locations=${this.latLng.lat},${this.latLng.lng}&zoom=18&size=@2x&type=hyb`;
+    this.imgUrl = `https://www.mapquestapi.com/staticmap/v5/map?key=${this.key}&locations=${this.latLng.lat},${this.latLng.lng}&zoom=18&size=@2x&type=hyb&size=2400,2400`;
     return this.imgUrl
   }
 
