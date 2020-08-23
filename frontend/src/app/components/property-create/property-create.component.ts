@@ -71,24 +71,43 @@ export class PropertyCreateComponent implements OnInit  {
         alert("empty fields");
      }
     else{
-      
-      let newProperty = new Property(
-        0,
-        this.priceField, 
-        this.addressField, 
-        this.squareFeetField, 
-        this.propertyImageUrls,
-        this.agentService.loggedInAgent,
-        this.propertyTypeField,
-        false
-        );
 
-      newProperty = await this.propServ.createProperty(newProperty);
+      let testAgent = {
+        "aid" : this.agentService.loggedInAgent.aid,
+        "username": this.agentService.loggedInAgent.username,
+        "password" : this.agentService.loggedInAgent.password,
+        "image_url" : this.agentService.loggedInAgent.image_url,
+        "email":this.agentService.loggedInAgent.email,
+        "phone" :this.agentService.loggedInAgent.phone
+      };
+
+      let testPropType = {
+          "ptid": this.propertyTypeField.ptid,
+          "description": this.propertyTypeField.description
+      };
+      
+      console.log("Image URLS: "+ this.propertyImageUrls);
+      let newProperty = {
+        "pid":0,
+        "price": this.priceField, 
+        "location":this.addressField, 
+        "square_feet":this.squareFeetField, 
+        "image_url": "",
+        "agent":testAgent,
+        "propertyType": testPropType,
+        "sold":false
+      };
+      console.log("Property Object: " + JSON.stringify(newProperty));
+      let returnProp = await this.propServ.createProperty(newProperty);
+
+      console.log("returned property from server " + returnProp);
       // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
       // We get the PID created and pass it to the NEWPROPERTYIMAGES() function
       // This should be the filename the image is stored under.
-      this.newPropertyImages(newProperty["pid"].toString());
-
+      this.newPropertyImages(returnProp["pid"].toString());
+      returnProp.image_url = this.propertyImageUrls;
+      let responseNewImages = await this.propServ.updateProperty(returnProp);
+      console.log(responseNewImages);
       this.priceField = undefined;
       this.addressField = "";
       this.squareFeetField = undefined;
