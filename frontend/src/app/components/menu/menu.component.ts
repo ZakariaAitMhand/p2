@@ -14,7 +14,7 @@ export class MenuComponent implements OnInit {
 
   private homePage:HomePageComponent = new HomePageComponent(this.propertyService);
   constructor(public agentService:AgentService, private router:Router, private propertyService:PropertyService) { }
-
+  url:string = "http://localhost:4200/";
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
     // console.log("from menu "+this.agentService.loggedInAgent);
@@ -70,7 +70,13 @@ export class MenuComponent implements OnInit {
   homeClick(){
     localStorage.setItem('searchValue', '');
     localStorage.setItem('searchedProperties', '');
-    // this.router.navigate(['/home']);
-    location.reload();
+    localStorage.setItem('sortNumber', '');
+    // alert(window.location.href);
+    if(window.location.href === this.url + "home"){
+      location.reload();
+    }else{
+      this.router.navigate(['/home']);
+    }
+    
   }
 }
