@@ -66,4 +66,11 @@ export class MenuComponent implements OnInit {
     localStorage.setItem('sortNumber', '1');
     location.reload();
   }
+
+  homeClick(){
+    localStorage.setItem('searchValue', '');
+    localStorage.setItem('searchedProperties', '');
+    // this.router.navigate(['/home']);
+    location.reload();
+  }
 }

@@ -24,10 +24,25 @@ export class PropertyService {
     return property;
   }
 
-  async getPropertyByAddress(address:string):Promise<Property>{
-    const property:Property = await this.http.get<Property> (this.url+`properties?location=${address}`).toPromise();
+  async getPropertyByAddress(address:string):Promise<Property[]>{
+    const property:Property[] = await this.http.get<Property[]> (this.url+`properties?location=${address}`).toPromise();
     return property;
   }
+
+  // async getPropertyByAddress():Promise<Array<Property>>{
+  //   //const property:Property = await this.http.get<Property> (this.url+properties?location=${address}).toPromise();
+  //   let properties:Array<Property> = await this.getAllProperties();
+  //   let newProperties:Array<Property>;
+  //   for(let property of properties){
+  //     if(property.location.includes(localStorage.getItem("searchInput"))){
+  //       console.log("print service " + property);
+  //       newProperties.push(property);
+  //     }
+  //   }
+  //   return newProperties;
+
+  // }
+
 
   async getAllProperties():Promise<Array<Property>>{
     const properties:Array<Property> = await this.http.get<Array<Property>>(this.url+`properties`).toPromise();

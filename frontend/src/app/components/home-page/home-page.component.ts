@@ -21,7 +21,13 @@ export class HomePageComponent implements OnInit {
   constructor(/*private interactionService:InteractionService,*/ public propServ:PropertyService ) { }
 
   async ngOnInit() {
-    await this.getAllProperties();
+    console.log('searchedProperties'+localStorage.getItem('searchedProperties'));
+    if(localStorage.getItem('searchValue')==''){
+      await this.getAllProperties();
+    }
+    else{
+      this.properties = JSON.parse(localStorage.getItem('searchedProperties'));
+    }
 
   }
 
