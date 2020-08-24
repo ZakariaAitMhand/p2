@@ -35,7 +35,7 @@ export class PropertyCardComponent implements OnInit {
   }
   
   async deletePropertyClick(id:number){
-    alert("Your are about to delete a property !!!!!!!");
+    //alert("Your are about to delete a property !!!!!!!");
     await this.propertyService.deletePropertyById(id);
     location.reload();
   }

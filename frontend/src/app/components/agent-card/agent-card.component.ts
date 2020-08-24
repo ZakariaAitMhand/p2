@@ -24,7 +24,7 @@ export class AgentCardComponent implements OnInit {
   }
 
   async agentClick(){
-    alert("agent card was clicked");
+    //alert("agent card was clicked");
     this.agentServ.agentProperties = await this.agentServ.getAllAgentsProperties(this.agentCard.aid);
     this.router.navigate(['/agentproperties'])
   }
