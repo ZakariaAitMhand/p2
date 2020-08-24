@@ -25,7 +25,7 @@ public class AgentHomePage {
 	@FindBy(id = "loginButton")
 	public WebElement loginButton;
 	
-	@FindBy(id = "agentLogoutButton")
+	@FindBy(id = "logoutButton")
 	public WebElement logoutButton;
 	
 	@FindBy(id = "agentCreateProperty")
@@ -49,7 +49,7 @@ public class AgentHomePage {
 	@FindBy(id = "uploadImageButton")
 	public WebElement uploadImageButton;
 	
-	@FindBy(id = "CreatePropertyContainer")
+	@FindBy(id = "propertyCards")
 	public WebElement propertyCard;
 	
 	@FindBy(className = "mat-option-text")
@@ -57,4 +57,14 @@ public class AgentHomePage {
 	
 	@FindBy(id = "deletePropertyIcon")
 	public WebElement deleteButton;
+	
+	@FindBy(id = "logo")
+	public WebElement homeButton;
+	
+	@FindBy(id = "agentButton")
+	public WebElement agentButton;
+	
+	@FindBy(id = "agentCard")
+	public WebElement agentCard;
+	
 }
