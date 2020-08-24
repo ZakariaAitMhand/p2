@@ -14,10 +14,11 @@ import { PropertyType } from '../../models/property-type';
 export class PropertyDisplayComponent implements OnInit {
   id:number; // retrieved from the URL parameter
 
-  propertyAdress:string="84 columbia avenue 07307";
+  propertyAdress:string="";
   image_url_array:string[];
   property:Property;
   baseImage:string;
+  Updateable:boolean;
 
   priceField:number; 
   squareFeetField:number;
@@ -25,11 +26,6 @@ export class PropertyDisplayComponent implements OnInit {
   propertyTypeField:PropertyType;
   propertyTypes: PropertyType[];
   propertyTypeFieldDescription:string;
-  
-  updateProperty(){}
-  propertyTypeChange(val:number){
-    // console.log("propertyTypeField " + val.description)
-  }
   constructor(
     private propertyService:PropertyService,
     private route: ActivatedRoute,
@@ -38,14 +34,47 @@ export class PropertyDisplayComponent implements OnInit {
     
     this.id = Number(this.route.snapshot.params.id);
   }
+  
+  async updateProperty():Promise<void>{
+
+    let testAgent = {
+      "aid" : this.agentService.loggedInAgent.aid,
+      "username": this.agentService.loggedInAgent.username,
+      "password" : this.agentService.loggedInAgent.password,
+      "image_url" : this.agentService.loggedInAgent.image_url,
+      "email":this.agentService.loggedInAgent.email,
+      "phone" :this.agentService.loggedInAgent.phone,
+      "propertyList" : null
+    };
+
+    let testPropType = {
+        "ptid": this.property.propertyType.ptid,
+        "description": this.property.propertyType.description,
+        "properties" : null
+    };
+    
+    this.property.price = this.priceField;
+    this.property.square_feet = this.squareFeetField;
+    this.property.location = this.addressField;
+    this.property.sold = this.property.sold;
+    this.property.agent = testAgent;
+    this.property.propertyType = testPropType;
+
+    let responseNewImages = await this.propertyService.updateProperty(this.property);
+    window.location.reload();
+  }
+  propertyTypeChange(val:number){
+  }
   async ngOnInit(): Promise<void> {
+    
+    localStorage.setItem("onHomePage", 'false');
     this.property = await this.propertyService.getPropertyById(this.id);
+    this.propertyAdress = this.property.location;
+    this.Updateable = (this.agentService.loggedInAgent!==undefined && this.agentService.loggedInAgent.aid==this.property.agent.aid)?true:false;
     this.image_url_array = this.property.image_url.split(',');
     for (let key in this.image_url_array) {
       this.image_url_array[key] = this.propertyService.ImageBaseUrl + this.image_url_array[key];
     }
-    // this.baseImage = this.propertyService.ImageBaseUrl + this.image_url_array[0];
-    // console.log("baseImage"+this.baseImage);
   
     this.getAllPropertyTypes();
     this.priceField = this.property.price;
@@ -53,13 +82,11 @@ export class PropertyDisplayComponent implements OnInit {
     this.addressField = this.property.location;
     this.propertyTypeField = this.property.propertyType;
     this.propertyTypeFieldDescription = this.property.propertyType.description;
-    console.log("this.propertyTypeField = "+JSON.stringify(this.propertyTypeField))
   }
 
   async getAllPropertyTypes():Promise<void>{
     await this.propertyTypeService.getAllPropertyTypes();
     this.propertyTypes = this.propertyTypeService.propertyTypes;
-    console.log("this.propertyTypes "+JSON.stringify(this.propertyTypes));
   }
 
   showPics:boolean[]=[
@@ -77,7 +104,6 @@ export class PropertyDisplayComponent implements OnInit {
     }
     this.currentThumbnailIndex = index;
     this.showPics[index] = true;
-    // console.log("thumbnailClick: " + this.currentThumbnailIndex)
   }
 
   incrementCurrentThumbnailIndex(){
@@ -85,7 +111,6 @@ export class PropertyDisplayComponent implements OnInit {
     if(this.currentThumbnailIndex == this.showPics.length)
       this.currentThumbnailIndex = 0;
       
-    // console.log("incrementCurrentThumbnailIndex: " + this.currentThumbnailIndex)
     this.thumbnailClick(this.currentThumbnailIndex);
   }
 
@@ -93,7 +118,6 @@ export class PropertyDisplayComponent implements OnInit {
     this.currentThumbnailIndex--;
     if(this.currentThumbnailIndex < 0)
       this.currentThumbnailIndex = this.showPics.length-1;
-    // console.log("decrementCurrentThumbnailIndex: " + this.currentThumbnailIndex)
     this.thumbnailClick(this.currentThumbnailIndex);
   }
 

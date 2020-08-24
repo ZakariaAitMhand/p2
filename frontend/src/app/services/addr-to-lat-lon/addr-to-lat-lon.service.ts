@@ -19,21 +19,5 @@ export class AddrToLatLonService {
   {
     
     this.details = await this.http.get(`http://www.mapquestapi.com/geocoding/v1/address?key=${this.key}&inFormat=kvp&outFormat=json&location=${addr}&thumbMaps=false`).toPromise();
-    // let result = await response.json;
-    // console.table(response);
-    // response.subscribe(
-    //   (data) => 
-    //   {
-    //     console.log(data);
-    //     console.log(data['results'][0].locations[0].latLng);
-    //     let latlng = data['results'][0].locations[0].latLng;
-    //     console.log(typeof(latlng.lat) + " " +typeof(latlng.lng))
-    //     this.lat = latlng.lat;
-    //     this.lng =  latlng.lng;
-    //     console.log(this.lat);
-    //     console.log(this.lng);
-    //   }
-    // );
-    // return response;
   }
 }

@@ -21,7 +21,6 @@ export class PropertyCreateComponent implements OnInit  {
   squareFeetField:number;
   propertyImageUrls:string;  
   propertyTypeChange(val){
-    // console.log("propertyTypeField " + val.description)
   }
   ngOnInit():void {
     this.getAllPropertyTypes();
@@ -30,7 +29,6 @@ export class PropertyCreateComponent implements OnInit  {
   async getAllPropertyTypes():Promise<void>{
     await this.propertyTypeService.getAllPropertyTypes();
     this.propertyTypes = this.propertyTypeService.propertyTypes;
-    console.log("this.propertyTypes "+JSON.stringify(this.propertyTypes));
   }
 
   constructor(
@@ -52,10 +50,7 @@ export class PropertyCreateComponent implements OnInit  {
       for(let image of imageFiles){
         this.uploadService.createFolderAndUploadImages(image, propertyId);
       }
-      console.log("property images url" + this.propertyImageUrls);
       this.propertyImageUrls = this.uploadService.imageCollection.join(",");
-      console.log("The string of images" + this.propertyImageUrls);
-      console.log("imagecollection: " + this.uploadService.imageCollection);
   }
 
 
@@ -63,36 +58,51 @@ export class PropertyCreateComponent implements OnInit  {
   
 
   async createProperty(){
-     if(this.priceField == 0 || this.priceField === undefined 
-        || this.addressField == "" || this.addressField == undefined 
-        || this.squareFeetField == 0 || this.squareFeetField === undefined 
-        || this.uploadService.fileImport === undefined
-      ){
-        alert("empty fields");
-     }
-    else{
-      
-      let newProperty = new Property(
-        0,
-        this.priceField, 
-        this.addressField, 
-        this.squareFeetField, 
-        this.propertyImageUrls,
-        this.agentService.loggedInAgent,
-        this.propertyTypeField,
-        false
-        );
-
-      newProperty = await this.propServ.createProperty(newProperty);
-      // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
-      // We get the PID created and pass it to the NEWPROPERTYIMAGES() function
-      // This should be the filename the image is stored under.
-      this.newPropertyImages(newProperty["pid"].toString());
-
-      this.priceField = undefined;
-      this.addressField = "";
-      this.squareFeetField = undefined;
-      this.uploadService.imageCollection = [];
+    if(this.priceField == 0 || this.priceField === undefined 
+       || this.addressField == "" || this.addressField == undefined 
+       || this.squareFeetField == 0 || this.squareFeetField === undefined 
+       || this.uploadService.fileImport === undefined
+     ){
+       alert("empty fields");
     }
-  }
+   else{
+
+     let testAgent = {
+       "aid" : this.agentService.loggedInAgent.aid,
+       "username": this.agentService.loggedInAgent.username,
+       "password" : this.agentService.loggedInAgent.password,
+       "image_url" : this.agentService.loggedInAgent.image_url,
+       "email":this.agentService.loggedInAgent.email,
+       "phone" :this.agentService.loggedInAgent.phone
+     };
+
+     let testPropType = {
+         "ptid": this.propertyTypeField.ptid,
+         "description": this.propertyTypeField.description
+     };
+     let newProperty = {
+       "pid":0,
+       "price": this.priceField, 
+       "location":this.addressField, 
+       "square_feet":this.squareFeetField, 
+       "image_url": "",
+       "agent":testAgent,
+       "propertyType": testPropType,
+       "sold":false
+     };
+     
+     let returnProp = await this.propServ.createProperty(newProperty);
+
+     // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
+     // We get the PID created and pass it to the NEWPROPERTYIMAGES() function
+     // This should be the filename the image is stored under.
+     this.newPropertyImages(returnProp["pid"].toString());
+     returnProp.image_url = this.propertyImageUrls;
+     let responseNewImages = await this.propServ.updateProperty(returnProp);
+     this.priceField = undefined;
+     this.addressField = "";
+     this.squareFeetField = undefined;
+     this.uploadService.imageCollection = [];
+   }
+ }
 }

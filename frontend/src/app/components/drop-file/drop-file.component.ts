@@ -17,22 +17,15 @@ export class DropFileComponent implements OnInit {
 
 
   onSelect(event) {
-    console.log(event);
     this.files.push(...event.addedFiles);
     const formData = new FormData();
     for (var i = 0; i < this.files.length; i++) { 
       formData.append("file[]", this.files[i]);
     }
-    this.UploadService.fileImport = this.files; // getting all images for the ImageUploadService
-    // this.http.post('http://localhost:8001/upload.php', formData)
-    // .subscribe(res => {
-      //  console.log(res);
-      //  alert('Uploaded Successfully.');
-    // })
+    this.UploadService.fileImport = this.files;
 }
 
 onRemove(event) {
-    console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
 }
 

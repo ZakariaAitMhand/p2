@@ -24,19 +24,14 @@ export class PropertyCardComponent implements OnInit {
   image_url_array:string[];
 
   ngOnInit(): void {
-    // console.log(this.property);
     this.propertyCard = this.property;
-    console.log(this.property);
-    console.log(this.agentService.loggedInAgent);
     this.isDeletable = (this.agentService.loggedInAgent
         && this.property.agent.aid == this.agentService.loggedInAgent.aid)?true:false;
 
     this.image_url_array = this.propertyCard.image_url.split(',');
     this.baseImage = this.propertyService.ImageBaseUrl + this.image_url_array[0];
-    console.log("baseImage"+this.baseImage);
   }
   propertyClick(id){
-    // alert("property Click")
   }
   
   async deletePropertyClick(id:number){

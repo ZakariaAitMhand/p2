@@ -4,8 +4,8 @@
     <button mat-menu-item>High to Low</button>
     <button mat-menu-item>Low to High</button>
   </mat-menu> -->
-  <button mat-button (click)="lowToHigh()">Low to High</button>
-  <button mat-button (click)="highToLow()">High to Low</button>
+  <button mat-button (click)="lowToHigh()" *ngIf = "onHomePage">Low to High</button>
+  <button mat-button (click)="highToLow()" *ngIf = "onHomePage">High to Low</button>
 </div>
 
 <img id="logo" (click)="homeClick()" routerLink="/home" src="../../../assets/images/Logo.png" alt="Anglo">

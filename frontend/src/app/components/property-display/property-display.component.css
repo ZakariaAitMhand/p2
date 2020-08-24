@@ -11,6 +11,7 @@
 }
 #ImgViewer img{
     user-select: none;
+    position: absolute;
 }
 #ImgThumbnail{
     padding: 5px 10px;
