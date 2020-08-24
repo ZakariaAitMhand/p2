@@ -12,10 +12,12 @@ export class PropertyTypeService {
 
   getAllPropertyTypes():void{
     // http call;
+
     this.propertyTypes = [
-      {ptid:1, description: 'Apartment', properties: []},
-      {ptid:2, description: 'House', properties: []},
-      {ptid:3, description: 'Condo', properties: []}
+      {ptid:1, description: 'House', properties: null},
+      {ptid:2, description: 'Condo', properties: null},
+      {ptid:3, description: 'Town House', properties: null},
+      {ptid:4, description: 'Land', properties: null}
     ];
   }
 }

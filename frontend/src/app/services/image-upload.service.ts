@@ -18,7 +18,7 @@ export class ImageUploadService {
     // foldername = Date.now().toString() + foldername;
     this.folderImport = foldername;
     let newFileName:string = file.name;
-    // newFileName = Date.now().toString() + newFileName;
+    newFileName = Date.now().toString() + newFileName;
     //console.log(foldername + "/" + newFileName);
 
     // console.log("checking file name" + newFileName);
