@@ -22,7 +22,7 @@ export class HomePageComponent implements OnInit {
 
   async ngOnInit() {
     console.log('searchedProperties'+localStorage.getItem('searchedProperties'));
-    if(localStorage.getItem('searchValue')==''){
+    if(localStorage.getItem('searchValue')==null || localStorage.getItem('searchValue')==''){
       await this.getAllProperties();
     }
     else{
@@ -43,7 +43,7 @@ export class HomePageComponent implements OnInit {
 
 
   async getAllProperties(){
-    console.log(localStorage.getItem('sortNumber'));
+    console.log("sortNumber  +++ "+localStorage.getItem('sortNumber'));
     this.sortOrder = Number(localStorage.getItem('sortNumber'));
     console.log(this.sortOrder);
     //this.properties = await this.propServ.getAllPropertiesHighToLow()
