@@ -13,7 +13,7 @@
   </div>
 
   <div id="leftSide">
-    <div id="UpdateForm" *ngIf="agentService.loggedInAgent!==undefined">
+    <div id="UpdateForm" *ngIf="Updateable">
       <mat-card id="UpdatePropertyContainer">
             <mat-card-title>Update Property</mat-card-title>
             <mat-form-field>
@@ -45,7 +45,7 @@
 
 
     <div id="mapSimple">
-      <app-simple-map [address]="propertyAdress"></app-simple-map>
+      <app-simple-map *ngIf="propertyAdress!=''" [address]="propertyAdress"></app-simple-map>
     </div>
   </div>
 </div>

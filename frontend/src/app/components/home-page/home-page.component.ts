@@ -18,10 +18,10 @@ export class HomePageComponent implements OnInit {
   properties:Property[];
   sortOrder:number; // 0 is get all properties // 1 is sort from low to high // 2 is sort from high to low 
 
-  constructor(/*private interactionService:InteractionService,*/ public propServ:PropertyService ) { }
+  constructor(public propServ:PropertyService ) { }
 
   async ngOnInit() {
-    console.log('searchedProperties'+localStorage.getItem('searchedProperties'));
+    localStorage.setItem("onHomePage", 'true');
     if(localStorage.getItem('searchValue')==null || localStorage.getItem('searchValue')==''){
       await this.getAllProperties();
     }
@@ -31,154 +31,22 @@ export class HomePageComponent implements OnInit {
 
   }
 
-  // backTransparent:boolean=this.interactionService.backTransparent;
-  // LoginContainer:boolean=this.interactionService.LoginContainer;
-  
-
-  // loginPopup(){
-  //   this.backTransparent=true;
-  //   this.LoginContainer=true;
-  // }
 
 
 
   async getAllProperties(){
-    console.log("sortNumber  +++ "+localStorage.getItem('sortNumber'));
     this.sortOrder = Number(localStorage.getItem('sortNumber'));
-    console.log(this.sortOrder);
-    //this.properties = await this.propServ.getAllPropertiesHighToLow()
     switch(this.sortOrder){
       case(0):
         this.properties = await this.propServ.getAllProperties();
-        console.log("getting all properties")
         break;
       case(1):
         this.properties = await this.propServ.getAllPropertiesLowToHigh();
-        console.log("sorting by low to high")
         break
       case(2):
         this.properties = await this.propServ.getAllPropertiesHighToLow();
-        console.log("sorting by high to low")
         break;
     }
-      //this.properties = await this.propServ.getAllProperties();
-     console.log("times ran");
-     
-     //Dummy Data
-  //   this.properties = [
-  //     {
-  //       "pid": 1,
-  //       "price": 100000.0,
-  //       "square_feet": 1234.0,
-  //       "image_url": "property1.png",
-  //       "location": "124 anywhere st. Anywhere, NJ 11111",
-  //       "agent": {
-  //           "aid": 3,
-  //           "username": "Johnny Bones",
-  //           "password": "YouTheMan!",
-  //           "image_url": "selfie.png",
-  //           "email": "JohnSells@email.com",
-  //           "phone": "201-551-1234",
-  //           "propertyList": null
-  //       },
-  //       "propertyType": {
-  //           "ptid": 3,
-  //           "description": "House",
-  //           "properties": null
-  //       },
-  //       "sold": false
-  //   },
-  //   {
-  //     "pid": 2,
-  //     "price": 100000.0,
-  //     "square_feet": 1234.0,
-  //     "image_url": "property1.png",
-  //     "location": "124 anywhere st. Anywhere, NJ 11111",
-  //     "agent": {
-  //         "aid": 3,
-  //         "username": "Johnny Bones",
-  //         "password": "YouTheMan!",
-  //         "image_url": "selfie.png",
-  //         "email": "JohnSells@email.com",
-  //         "phone": "201-551-1234",
-  //         "propertyList": null
-  //     },
-  //     "propertyType": {
-  //         "ptid": 3,
-  //         "description": "House",
-  //         "properties": null
-  //     },
-  //     "sold": false
-  // },
-  // {
-  //   "pid": 3,
-  //   "price": 100000.0,
-  //   "square_feet": 1234.0,
-  //   "image_url": "property1.png",
-  //   "location": "124 anywhere st. Anywhere, NJ 11111",
-  //   "agent": {
-  //       "aid": 3,
-  //       "username": "Johnny Bones",
-  //       "password": "YouTheMan!",
-  //       "image_url": "selfie.png",
-  //       "email": "JohnSells@email.com",
-  //       "phone": "201-551-1234",
-  //       "propertyList": null
-  //   },
-  //   "propertyType": {
-  //       "ptid": 3,
-  //       "description": "House",
-  //       "properties": null
-  //   },
-  //   "sold": false
-  // },
-  // {
-  //   "pid": 4,
-  //   "price": 100000.0,
-  //   "square_feet": 1234.0,
-  //   "image_url": "property1.png",
-  //   "location": "124 anywhere st. Anywhere, NJ 11111",
-  //   "agent": {
-  //       "aid": 3,
-  //       "username": "Johnny Bones",
-  //       "password": "YouTheMan!",
-  //       "image_url": "selfie.png",
-  //       "email": "JohnSells@email.com",
-  //       "phone": "201-551-1234",
-  //       "propertyList": null
-  //   },
-  //   "propertyType": {
-  //       "ptid": 3,
-  //       "description": "House",
-  //       "properties": null
-  //   },
-  //   "sold": false
-  //   },
-  //   {
-  //     "pid": 5,
-  //     "price": 100000.0,
-  //     "square_feet": 1234.0,
-  //     "image_url": "property1.png",
-  //     "location": "124 anywhere st. Anywhere, NJ 11111",
-  //     "agent": {
-  //         "aid": 3,
-  //         "username": "Johnny Bones",
-  //         "password": "YouTheMan!",
-  //         "image_url": "selfie.png",
-  //         "email": "JohnSells@email.com",
-  //         "phone": "201-551-1234",
-  //         "propertyList": null
-  //     },
-  //     "propertyType": {
-  //         "ptid": 3,
-  //         "description": "House",
-  //         "properties": null
-  //     },
-  //     "sold": false
-  //   }
-
-  //   ];
-    // console.log("getting all properties: " + JSON.stringify(this.properties));
   }
 
 }

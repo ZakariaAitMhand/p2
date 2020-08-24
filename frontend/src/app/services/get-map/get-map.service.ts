@@ -29,10 +29,6 @@ export class GetMapService {
     await this.addrToLng.getLatLong(addr);
     this.latLng = this.addrToLng.details["results"][0].locations[0].latLng
 
-    // For DEBUG ONLY
-    // console.log(this.latLng = this.addrToLng.details["results"][0].locations[0].latLng);
-    // let details = await response.json();
-
 
     this.imgUrl = `https://www.mapquestapi.com/staticmap/v5/map?key=${this.key}&locations=${this.latLng.lat},${this.latLng.lng}&zoom=18&size=@2x&type=hyb&size=2400,2400`;
     return this.imgUrl

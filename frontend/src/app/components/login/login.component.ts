@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
         this.wrongCredentialsAlert();
         return;
       }
-      console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
       this.agentService.LoginContainer=false;
       this.agentService.LoginContainerBackTransparent=false;
       location.reload();
@@ -52,20 +51,5 @@ export class LoginComponent implements OnInit {
       duration: 1000,
     });
   }
-
-  // inputs={
-  //   userName: new FormControl('', [Validators.required]),
-  //   password: new FormControl('', [Validators.required, Validators.min(3) ])
-  // }
-  // signin: FormGroup = new FormGroup({
-  //   userName: new FormControl('', [Validators.required, Validators.min(3) ]),
-  //   password: new FormControl('', [Validators.required, Validators.min(3) ])
-  // });
-  // get userName() { 
-  //   return this.signin.get('userName'); 
-  // }
-  // get passwordInput() { 
-  //   return this.signin.get('password'); 
-  // }
 
 }

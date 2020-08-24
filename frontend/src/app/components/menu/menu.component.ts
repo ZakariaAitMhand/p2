@@ -3,6 +3,7 @@ import { AgentService } from '../../services/agent/agent.service';
 import { Router } from '@angular/router';
 import {PropertyService} from '../../services/property/property.service';
 import {HomePageComponent} from '../home-page/home-page.component';
+import { bool } from 'aws-sdk/clients/signer';
 
 
 @Component({
@@ -13,19 +14,19 @@ import {HomePageComponent} from '../home-page/home-page.component';
 export class MenuComponent implements OnInit {
 
   private homePage:HomePageComponent = new HomePageComponent(this.propertyService);
+  onHomePage:boolean;
   constructor(public agentService:AgentService, private router:Router, private propertyService:PropertyService) { }
   url:string = "http://localhost:4200/";
   isLogedIn:boolean = (this.agentService.loggedInAgent===undefined)?false:true;
   ngOnInit(): void {
-    // console.log("from menu "+this.agentService.loggedInAgent);
     if(localStorage.getItem('agent')){
       this.agentService.loggedInAgent = JSON.parse(localStorage.getItem('agent'));
     }
+    this.onHomePage = (localStorage.getItem('onHomePage')=='true')?true:false;
   }
 
   agentsBtnClick():void{
     this.router.navigate(['/displayagents']);
-    // console.log("loggedInAgent " + this.agentService.loggedInAgent);
   }
 
 
@@ -71,7 +72,6 @@ export class MenuComponent implements OnInit {
     localStorage.setItem('searchValue', '');
     localStorage.setItem('searchedProperties', '');
     localStorage.setItem('sortNumber', '');
-    // alert(window.location.href);
     if(window.location.href === this.url + "home"){
       location.reload();
     }else{

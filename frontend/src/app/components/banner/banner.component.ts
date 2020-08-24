@@ -15,13 +15,11 @@ export class BannerComponent implements OnInit {
   search:string = (localStorage.getItem('searchValue')=='')?localStorage.getItem('searchValue'):'';
 
   constructor(private propServ:PropertyService) { }
-  // srch:string = "fas";
   ngOnInit(): void {
   }
 
 
   performSearch():void{
-    // alert(this.search);
     this.getPropertyByAddress(this.search);
   }
 
@@ -33,8 +31,6 @@ export class BannerComponent implements OnInit {
       this.properties = await this.propServ.getPropertyByAddress(searchValue);
       localStorage.setItem('searchedProperties',JSON.stringify(this.properties));
       localStorage.setItem('searchValue',searchValue);
-      // console.log("Address found: ");
-      // console.log(this.properties);
       location.reload();
   }
 }

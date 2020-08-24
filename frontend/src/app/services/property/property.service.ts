@@ -21,8 +21,15 @@ export class PropertyService {
     this.ImageBaseUrl= `https://project-p2.s3.amazonaws.com/`;
   }
 
-   async createProperty(property:Property):Promise<Property>{
+  async createProperty(property:any):Promise<Property>{
     property = await this.http.post<Property>(this.url+`properties`,property).toPromise();
+
+    return property;
+  }
+
+
+  async updateProperty(property:any):Promise<Property>{
+    property = await this.http.put<Property>(this.url+`properties`,property).toPromise();
 
     return property;
   }
@@ -31,21 +38,6 @@ export class PropertyService {
     const property:Property[] = await this.http.get<Property[]> (this.url+`properties?location=${address}`).toPromise();
     return property;
   }
-
-  // async getPropertyByAddress():Promise<Array<Property>>{
-  //   //const property:Property = await this.http.get<Property> (this.url+properties?location=${address}).toPromise();
-  //   let properties:Array<Property> = await this.getAllProperties();
-  //   let newProperties:Array<Property>;
-  //   for(let property of properties){
-  //     if(property.location.includes(localStorage.getItem("searchInput"))){
-  //       console.log("print service " + property);
-  //       newProperties.push(property);
-  //     }
-  //   }
-  //   return newProperties;
-
-  // }
-
 
   async getAllProperties():Promise<Array<Property>>{
     const properties:Array<Property> = await this.http.get<Array<Property>>(this.url+`properties`).toPromise();

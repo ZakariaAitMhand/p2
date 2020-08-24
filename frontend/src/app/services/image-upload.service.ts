@@ -14,17 +14,11 @@ export class ImageUploadService {
   folderImport:string;
   imageCollection:string[] = [];
 
-  createFolderAndUploadImages(file, foldername:string){     
-    // foldername = Date.now().toString() + foldername;
+  createFolderAndUploadImages(file, foldername:string){
     this.folderImport = foldername;
     let newFileName:string = file.name;
     newFileName = Date.now().toString() + newFileName;
-    //console.log(foldername + "/" + newFileName);
-
-    // console.log("checking file name" + newFileName);
     // FOR DEBUG ONLY
-    console.log("Filepath/Filename: " + foldername +"/"+ file.name);
-    // this.imageCollection.push(foldername + "/" + newFileName);
     this.imageCollection.push(foldername + "/" + file.name);
 
     const contentType = file.type;
@@ -44,10 +38,8 @@ export class ImageUploadService {
       };
       bucket.upload(params, function (err, data) {
           if (err) {
-              console.log('There was an error uploading your file: ', err);
               return false;
           }
-          console.log('Successfully uploaded file.', data);
           return true;
       });
   }
