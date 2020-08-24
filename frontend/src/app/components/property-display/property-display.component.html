@@ -3,20 +3,45 @@
 <div id="grid">
   <div id="carousel">
     <div id="ImgViewer">
-        <img src="../../../assets/images/1.jpg" [ngClass]="{'widthFull': showPics[0], 'width0': !showPics[0]}" id="Img0" ><!--*ngIf="showPics[0]"-->
-        <img src="../../../assets/images/2.jpg" [ngClass]="{'widthFull': showPics[1], 'width0': !showPics[1]}" id="Img1" ><!--*ngIf="showPics[1]"-->
-        <img src="../../../assets/images/3.jpg" [ngClass]="{'widthFull': showPics[2], 'width0': !showPics[2]}" id="Img2" ><!--*ngIf="showPics[2]"-->
-        <img src="../../../assets/images/4.jpg" [ngClass]="{'widthFull': showPics[3], 'width0': !showPics[3]}" id="Img3" ><!--*ngIf="showPics[3]"-->
+        <img *ngFor="let imgSrc of image_url_array; let i = index" [src]="imgSrc" [ngClass]="{'widthFull': showPics[i], 'width0': !showPics[i]}" id="Img{{i}}" >
     </div>
     <div id="ImgThumbnail">
         <mat-icon (click)="decrementCurrentThumbnailIndex()">keyboard_arrow_left</mat-icon>
-        <img src="../../../assets/images/1.jpg" [ngClass]="{'SelectedThumb': showPics[0]}" id="Thmb0" (click)="thumbnailClick(0)">
-        <img src="../../../assets/images/2.jpg" [ngClass]="{'SelectedThumb': showPics[1]}" id="Thmb1" (click)="thumbnailClick(1)">
-        <img src="../../../assets/images/3.jpg" [ngClass]="{'SelectedThumb': showPics[2]}" id="Thmb2" (click)="thumbnailClick(2)">
-        <img src="../../../assets/images/4.jpg" [ngClass]="{'SelectedThumb': showPics[3]}" id="Thmb3" (click)="thumbnailClick(3)">
+        <img  *ngFor="let imgSrc of image_url_array; let i = index" [src]="imgSrc" [ngClass]="{'SelectedThumb': showPics[i]}" id="Thmb{{i}}" (click)="thumbnailClick(i)">
         <mat-icon (click)="incrementCurrentThumbnailIndex()">keyboard_arrow_right</mat-icon>
     </div>
   </div>
+
+  <div id="UpdateForm" *ngIf="agentService.loggedInAgent!==undefined">
+    <mat-card id="CreatePropertyContainer">
+          <mat-card-title>Update Property</mat-card-title>
+          <mat-form-field>
+              <mat-label>Price</mat-label>
+              <input matInput type="number" placeholder="Price" id="PriceInput" required [(ngModel)] = "priceField">
+          </mat-form-field>
+          <mat-form-field>
+              <mat-label>Surface</mat-label>
+              <input matInput type="number" placeholder="Surface" id="SurfaceInput" required [(ngModel)] = "squareFeetField">
+              <mat-hint >Enter Surface in square feet</mat-hint>
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="Location" id="LocationInput" required [(ngModel)] = "addressField">
+          </mat-form-field>
+          <mat-form-field>
+          <label>Property Type: </label>
+            <input matInput type="text" value="{{propertyTypeFieldDescription}}" disabled>
+          <!-- <mat-select id ="propertyTypeInput" (ngModelChange)="propertyTypeChange($event)" [(ngModel)] = "propertyTypeField">
+              <mat-option *ngFor="let propertyType of propertyTypes" [value]="propertyType"  [selected]="propertyType.ptid===property.propertyType.ptid"> 
+              {{propertyType.description}}  {{propertyType.ptid===propertyTypeField.ptid}}
+              </mat-option>
+          </mat-select> -->
+          </mat-form-field>
+          <button mat-button color="accent" id = "agentPropertyUpdate" (click) = "updateProperty()">Create</button>
+          <!-- {{property.propertyType.ptid}} -->
+          <!-- <button mat-button color="accent">Cancel</button> -->
+    </mat-card>
+  </div>  
+
 
   <div id="mapSimple">
     <app-simple-map [address]="propertyAdress"></app-simple-map>
