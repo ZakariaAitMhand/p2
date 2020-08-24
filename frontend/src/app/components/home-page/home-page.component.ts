@@ -21,7 +21,7 @@ export class HomePageComponent implements OnInit {
   constructor(/*private interactionService:InteractionService,*/ public propServ:PropertyService ) { }
 
   async ngOnInit() {
-    console.log('searchedProperties'+localStorage.getItem('searchedProperties'));
+    //console.log('searchedProperties'+localStorage.getItem('searchedProperties'));
     if(localStorage.getItem('searchValue')==''){
       await this.getAllProperties();
     }
@@ -43,26 +43,26 @@ export class HomePageComponent implements OnInit {
 
 
   async getAllProperties(){
-    console.log(localStorage.getItem('sortNumber'));
+    //console.log(localStorage.getItem('sortNumber'));
     this.sortOrder = Number(localStorage.getItem('sortNumber'));
-    console.log(this.sortOrder);
+    //console.log(this.sortOrder);
     //this.properties = await this.propServ.getAllPropertiesHighToLow()
     switch(this.sortOrder){
       case(0):
         this.properties = await this.propServ.getAllProperties();
-        console.log("getting all properties")
+        //console.log("getting all properties")
         break;
       case(1):
         this.properties = await this.propServ.getAllPropertiesLowToHigh();
-        console.log("sorting by low to high")
+        //console.log("sorting by low to high")
         break
       case(2):
         this.properties = await this.propServ.getAllPropertiesHighToLow();
-        console.log("sorting by high to low")
+        //console.log("sorting by high to low")
         break;
     }
       //this.properties = await this.propServ.getAllProperties();
-     console.log("times ran");
+     //console.log("times ran");
      
      //Dummy Data
   //   this.properties = [

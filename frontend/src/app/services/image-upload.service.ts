@@ -23,7 +23,7 @@ export class ImageUploadService {
 
     // console.log("checking file name" + newFileName);
     // FOR DEBUG ONLY
-    console.log("Filepath/Filename: " + foldername +"/"+ file.name);
+    // console.log("Filepath/Filename: " + foldername +"/"+ file.name);
     // this.imageCollection.push(foldername + "/" + newFileName);
     this.imageCollection.push(foldername + "/" + file.name);
 
@@ -44,10 +44,10 @@ export class ImageUploadService {
       };
       bucket.upload(params, function (err, data) {
           if (err) {
-              console.log('There was an error uploading your file: ', err);
+              // console.log('There was an error uploading your file: ', err);
               return false;
           }
-          console.log('Successfully uploaded file.', data);
+          // console.log('Successfully uploaded file.', data);
           return true;
       });
   }

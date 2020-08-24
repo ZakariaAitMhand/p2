@@ -17,7 +17,7 @@ export class DropFileComponent implements OnInit {
 
 
   onSelect(event) {
-    console.log(event);
+    //console.log(event);
     this.files.push(...event.addedFiles);
     const formData = new FormData();
     for (var i = 0; i < this.files.length; i++) { 
@@ -32,7 +32,7 @@ export class DropFileComponent implements OnInit {
 }
 
 onRemove(event) {
-    console.log(event);
+    //console.log(event);
     this.files.splice(this.files.indexOf(event), 1);
 }
 

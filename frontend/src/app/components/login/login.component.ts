@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
         this.wrongCredentialsAlert();
         return;
       }
-      console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
+      //console.log("loggedInAgent" + JSON.stringify(this.agentService.loggedInAgent));
       this.agentService.LoginContainer=false;
       this.agentService.LoginContainerBackTransparent=false;
       location.reload();

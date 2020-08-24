@@ -21,7 +21,7 @@ export class AgentsDisplayComponent implements OnInit {
   async getAllAgents(){
      this.agents = await this.agentServ.getAllAgents();
 
-     console.log(this.agents);
+     //console.log(this.agents);
 
 
      //Dummy Data

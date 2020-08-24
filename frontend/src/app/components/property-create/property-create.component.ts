@@ -7,6 +7,7 @@ import { PropertyService } from 'src/app/services/property/property.service';
 import { PropertyTypeService } from 'src/app/services/property-type/property-type.service';
 import { AgentService } from 'src/app/services/agent/agent.service';
 import { PropertyType } from 'src/app/models/property-type';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-property-create',
   templateUrl: './property-create.component.html',
@@ -30,14 +31,15 @@ export class PropertyCreateComponent implements OnInit  {
   async getAllPropertyTypes():Promise<void>{
     await this.propertyTypeService.getAllPropertyTypes();
     this.propertyTypes = this.propertyTypeService.propertyTypes;
-    console.log("this.propertyTypes "+JSON.stringify(this.propertyTypes));
+    //console.log("this.propertyTypes "+JSON.stringify(this.propertyTypes));
   }
 
   constructor(
     private uploadService: ImageUploadService, 
     private propServ:PropertyService,
     private agentService:AgentService,
-    private propertyTypeService:PropertyTypeService
+    private propertyTypeService:PropertyTypeService,
+    public _snackBar:MatSnackBar
     ){
   //constructor(private uploadService: ImageUploadService, public propServ:PropertyService){
 
@@ -52,10 +54,10 @@ export class PropertyCreateComponent implements OnInit  {
       for(let image of imageFiles){
         this.uploadService.createFolderAndUploadImages(image, propertyId);
       }
-      console.log("property images url" + this.propertyImageUrls);
+      //console.log("property images url" + this.propertyImageUrls);
       this.propertyImageUrls = this.uploadService.imageCollection.join(",");
-      console.log("The string of images" + this.propertyImageUrls);
-      console.log("imagecollection: " + this.uploadService.imageCollection);
+      //console.log("The string of images" + this.propertyImageUrls);
+      //console.log("imagecollection: " + this.uploadService.imageCollection);
   }
 
 
@@ -68,7 +70,10 @@ export class PropertyCreateComponent implements OnInit  {
         || this.squareFeetField == 0 || this.squareFeetField === undefined 
         || this.uploadService.fileImport === undefined
       ){
-        alert("empty fields");
+        //alert("empty fields");
+        this._snackBar.open("Login fields are empty",'', {
+          duration: 4000,
+        });
      }
     else{
 
@@ -86,7 +91,7 @@ export class PropertyCreateComponent implements OnInit  {
           "description": this.propertyTypeField.description
       };
       
-      console.log("Image URLS: "+ this.propertyImageUrls);
+      // console.log("Image URLS: "+ this.propertyImageUrls);
       let newProperty = {
         "pid":0,
         "price": this.priceField, 
@@ -97,21 +102,24 @@ export class PropertyCreateComponent implements OnInit  {
         "propertyType": testPropType,
         "sold":false
       };
-      console.log("Property Object: " + JSON.stringify(newProperty));
+      // console.log("Property Object: " + JSON.stringify(newProperty));
       let returnProp = await this.propServ.createProperty(newProperty);
 
-      console.log("returned property from server " + returnProp);
+      // console.log("returned property from server " + returnProp);
       // Since we get a NEW PROPERTY MODEL/OBJECT back from the API
       // We get the PID created and pass it to the NEWPROPERTYIMAGES() function
       // This should be the filename the image is stored under.
       this.newPropertyImages(returnProp["pid"].toString());
       returnProp.image_url = this.propertyImageUrls;
       let responseNewImages = await this.propServ.updateProperty(returnProp);
-      console.log(responseNewImages);
+      // console.log(responseNewImages);
       this.priceField = undefined;
       this.addressField = "";
       this.squareFeetField = undefined;
       this.uploadService.imageCollection = [];
+      this._snackBar.open("Property Created",'', {
+        duration: 4000,
+      });
     }
   }
 }
